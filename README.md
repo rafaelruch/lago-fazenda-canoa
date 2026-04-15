@@ -5,6 +5,19 @@ Landing page de alta conversão do **Condomínio Reserva Fazenda Canoa**, em Sil
 **URL de produção (alvo):** [lago.fazendacanoa.com.br](https://lago.fazendacanoa.com.br)
 **Desenvolvido por:** [RUCH](https://ruch.digital)
 
+## 📂 Repositórios relacionados
+
+Este é o **monorepo do projeto** (protótipo + docs + cópia do tema/plugin para referência).
+Para **deploy em produção** via Deployer for Git, use os repositórios dedicados com estrutura no root:
+
+| Repositório | Propósito | Deploy destino |
+|---|---|---|
+| 🎨 [fazenda-canoa-theme](https://github.com/rafaelruch/fazenda-canoa-theme) | Block theme WordPress | `wp-content/themes/fazenda-canoa/` |
+| 🔌 [lfc-opcoes-plugin](https://github.com/rafaelruch/lfc-opcoes-plugin) | Plugin de opções + CPT Leads + webhook | `wp-content/plugins/lfc-opcoes/` |
+| 📦 [lago-fazenda-canoa](https://github.com/rafaelruch/lago-fazenda-canoa) (este) | Monorepo com protótipo, docs e histórico | — |
+
+> ⚠️ **Não use este monorepo para deploy direto em produção.** O Deployer for Git faria clone do repositório inteiro em `wp-content/themes/`, e o WP detectaria o `prototype/` como tema inválido. Use sempre os repositórios dedicados acima.
+
 ---
 
 ## 📦 Estrutura do repositório
