@@ -38,6 +38,10 @@ function lfc_get_options() {
 		'book_url'            => '',
 		'webhook_url'         => '',
 		'webhook_secret'      => '',
+		// SEO / Analytics
+		'gsc_verification'    => '',
+		'ga4_id'              => '',
+		'meta_pixel_id'       => '',
 	];
 	$saved = get_option( 'lfc_opcoes', [] );
 	return wp_parse_args( $saved, $defaults );

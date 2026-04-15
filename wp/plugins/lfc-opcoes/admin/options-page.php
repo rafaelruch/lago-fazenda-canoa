@@ -42,6 +42,10 @@ function lfc_sanitize_options( $input ) {
 	$clean['book_url']           = esc_url_raw( $input['book_url'] ?? '' );
 	$clean['webhook_url']        = esc_url_raw( $input['webhook_url'] ?? '' );
 	$clean['webhook_secret']     = sanitize_text_field( $input['webhook_secret'] ?? '' );
+	// SEO / Analytics — aceita apenas alfanuméricos + hífen
+	$clean['gsc_verification']   = preg_replace( '/[^A-Za-z0-9_\-]/', '', $input['gsc_verification'] ?? '' );
+	$clean['ga4_id']             = preg_replace( '/[^A-Za-z0-9\-]/', '', $input['ga4_id'] ?? '' );
+	$clean['meta_pixel_id']      = preg_replace( '/\D/', '', $input['meta_pixel_id'] ?? '' );
 	return $clean;
 }
 
@@ -125,6 +129,40 @@ function lfc_render_options_page() {
 					<td>
 						<input type="text" id="lfc_secret" name="lfc_opcoes[webhook_secret]" value="<?php echo esc_attr( $opts['webhook_secret'] ); ?>" class="regular-text" placeholder="token-secreto-qualquer">
 						<p class="description"><?php esc_html_e( 'Enviado no header X-LFC-Secret. Use no n8n/RD para validar que o request veio deste site.', 'lfc-opcoes' ); ?></p>
+					</td>
+				</tr>
+			</table>
+
+			<h2 class="title"><?php esc_html_e( 'SEO e Analytics', 'lfc-opcoes' ); ?></h2>
+			<p class="description">
+				<?php esc_html_e( 'Códigos do Google e Meta para posicionamento orgânico e rastreamento de conversões.', 'lfc-opcoes' ); ?>
+			</p>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><label for="lfc_gsc"><?php esc_html_e( 'Google Search Console — Código de verificação', 'lfc-opcoes' ); ?></label></th>
+					<td>
+						<input type="text" id="lfc_gsc" name="lfc_opcoes[gsc_verification]" value="<?php echo esc_attr( $opts['gsc_verification'] ); ?>" class="regular-text" placeholder="Cole apenas o content do meta tag">
+						<p class="description">
+							<?php esc_html_e( 'Em search.google.com/search-console, escolha "Meta tag" e copie apenas o valor do atributo content. Não precisa colar a tag inteira.', 'lfc-opcoes' ); ?>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="lfc_ga4"><?php esc_html_e( 'Google Analytics 4 — ID de Medição', 'lfc-opcoes' ); ?></label></th>
+					<td>
+						<input type="text" id="lfc_ga4" name="lfc_opcoes[ga4_id]" value="<?php echo esc_attr( $opts['ga4_id'] ); ?>" class="regular-text" placeholder="G-XXXXXXXXXX">
+						<p class="description">
+							<?php esc_html_e( 'Formato G-XXXXXXXXXX. Encontre em Analytics → Admin → Streams.', 'lfc-opcoes' ); ?>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="lfc_meta_pixel"><?php esc_html_e( 'Meta Pixel ID (Facebook Ads)', 'lfc-opcoes' ); ?></label></th>
+					<td>
+						<input type="text" id="lfc_meta_pixel" name="lfc_opcoes[meta_pixel_id]" value="<?php echo esc_attr( $opts['meta_pixel_id'] ); ?>" class="regular-text" placeholder="15 dígitos numéricos">
+						<p class="description">
+							<?php esc_html_e( 'Apenas números. Encontre em Meta Business → Gerenciador de eventos → Pixels.', 'lfc-opcoes' ); ?>
+						</p>
 					</td>
 				</tr>
 			</table>

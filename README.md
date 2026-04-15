@@ -70,6 +70,33 @@ lago-fazenda-canoa/
 - **Semântica HTML5** + ARIA (dialog, aria-modal, aria-expanded)
 - **Escapping server-side** contra XSS
 
+### SEO (alinhado com Google) — `wp/themes/fazenda-canoa/inc/`
+- **Structured Data (Schema.org JSON-LD)** com 6 entidades em grafo:
+  - `WebSite` (com SearchAction ready)
+  - `Organization` (FRSC com endereço, logo, contato, redes)
+  - `RealEstateListing` + `Product` (empreendimento, offer R$ 360k, 14 amenityFeatures, geo)
+  - `Place` (coord -16.3195247, -48.4709649 + hasMap)
+  - `BreadcrumbList` (Goiás › Silvânia › Condomínios › Fazenda Canoa)
+  - `FAQPage` (8 perguntas/respostas — habilita rich snippets no Google)
+- **Meta tags expandidas**: description, robots (max-image-preview:large), canonical, geo tags (geo.region, geo.position, ICBM), Open Graph completo com og:image dimensions, Twitter Cards
+- **Integração com Google ecosystem** — campos em `Configurações → Fazenda Canoa`:
+  - Google Search Console (verificação de propriedade)
+  - Google Analytics 4 (GA4 com anonymize_ip)
+  - Meta Pixel (Facebook Ads)
+- **Performance (Core Web Vitals)**:
+  - `<link rel="preload">` da imagem LCP (hero banner)
+  - `dns-prefetch` + `preconnect` para fontes/Maps/WhatsApp
+  - JavaScript deferred
+  - Lazy loading nativo para imagens below-the-fold
+- **Cleanup WordPress bloat**:
+  - Emoji scripts removidos (~10KB de JS)
+  - Generator tag removido (segurança + limpeza)
+  - RSS feeds, wlwmanifest, rsd, oembed, shortlinks — todos removidos
+  - XML-RPC desativado (superfície de ataque)
+  - X-Pingback header removido
+- **Security headers**: X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy
+- **Sitemap** via WP core (`/wp-sitemap.xml`) + `robots.txt` virtual
+
 ---
 
 ## 🚀 Quick start

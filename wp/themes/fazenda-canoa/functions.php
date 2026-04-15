@@ -8,6 +8,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// SEO (meta tags + JSON-LD + GSC/GA4/Pixel)
+require_once get_theme_file_path( 'inc/seo.php' );
+// Performance + cleanup (resource hints, bloat removal, security headers)
+require_once get_theme_file_path( 'inc/performance.php' );
+
 /**
  * Theme setup
  */
@@ -40,25 +45,7 @@ add_action( 'wp_head', function () {
 	echo '<meta name="theme-color" content="#FFFFFF">' . "\n";
 }, 1 );
 
-/**
- * Open Graph tags (compartilhamento em redes sociais)
- */
-add_action( 'wp_head', function () {
-	$title = wp_get_document_title();
-	$desc  = 'Condomínio Reserva Fazenda Canoa — Lotes a partir de R$ 360.000 em Silvânia/GO, às margens do Lago Corumbá IV. Infraestrutura de resort entregue.';
-	$url   = home_url( add_query_arg( null, null ) );
-	$og    = get_theme_file_uri( 'assets/fotos/22.jpg' );
-	?>
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="<?php echo esc_attr( $title ); ?>">
-	<meta property="og:description" content="<?php echo esc_attr( $desc ); ?>">
-	<meta property="og:url" content="<?php echo esc_url( $url ); ?>">
-	<meta property="og:image" content="<?php echo esc_url( $og ); ?>">
-	<meta property="og:locale" content="pt_BR">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="description" content="<?php echo esc_attr( $desc ); ?>">
-	<?php
-}, 2 );
+// Open Graph + Twitter Cards expandidos agora ficam em inc/seo.php
 
 /**
  * Enqueue styles and scripts (front-end)
