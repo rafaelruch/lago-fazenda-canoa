@@ -1,0 +1,112 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1180px",
+      "wideSize": "1440px"
+    },
+    "color": {
+      "palette": [
+        { "slug": "paper",      "color": "#FFFFFF",           "name": "Paper" },
+        { "slug": "paper-soft", "color": "#F7F6F2",           "name": "Paper Soft" },
+        { "slug": "paper-mid",  "color": "#EFEDE6",           "name": "Paper Mid" },
+        { "slug": "ink",        "color": "#1A1A1A",           "name": "Ink" },
+        { "slug": "text-2",     "color": "#4A4A4A",           "name": "Text 2" },
+        { "slug": "text-mute",  "color": "#7A7A7A",           "name": "Text Muted" },
+        { "slug": "line",       "color": "#E8E6DF",           "name": "Line" },
+        { "slug": "accent",     "color": "#1F7A3F",           "name": "Green Accent" },
+        { "slug": "accent-2",   "color": "#2E8F4F",           "name": "Green Accent 2" },
+        { "slug": "warning",    "color": "#B8710F",           "name": "Warning (Corten)" },
+        { "slug": "warning-soft","color": "#FDF5E8",          "name": "Warning Soft" },
+        { "slug": "whatsapp",   "color": "#25D366",           "name": "WhatsApp" }
+      ],
+      "gradients": [],
+      "custom": true,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false
+    },
+    "typography": {
+      "customFontSize": true,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "'Manrope', system-ui, -apple-system, sans-serif",
+          "slug": "manrope",
+          "name": "Manrope",
+          "fontFace": [
+            {
+              "fontFamily": "Manrope",
+              "fontStyle": "normal",
+              "fontWeight": "300 700",
+              "src": [ "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        { "slug": "x-small", "size": "0.75rem", "name": "Extra Small" },
+        { "slug": "small",   "size": "0.88rem", "name": "Small" },
+        { "slug": "medium",  "size": "1rem",    "name": "Medium" },
+        { "slug": "large",   "size": "1.25rem", "name": "Large" },
+        { "slug": "x-large", "size": "1.5rem",  "name": "Extra Large" },
+        { "slug": "xx-large","size": "2rem",    "name": "XX Large" },
+        { "slug": "display", "size": "2.8rem",  "name": "Display" }
+      ]
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true,
+      "blockGap": true,
+      "spacingScale": {
+        "operator": "*",
+        "increment": 1.5,
+        "steps": 9,
+        "mediumStep": 1.5,
+        "unit": "rem"
+      }
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--paper)",
+      "text": "var(--wp--preset--color--ink)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--manrope)",
+      "fontSize": "1rem",
+      "lineHeight": "1.55",
+      "fontWeight": "400"
+    },
+    "elements": {
+      "h1": { "typography": { "fontWeight": "700", "letterSpacing": "-0.025em" } },
+      "h2": { "typography": { "fontWeight": "600", "letterSpacing": "-0.02em" } },
+      "h3": { "typography": { "fontWeight": "600", "letterSpacing": "-0.015em" } },
+      "link": {
+        "color": { "text": "var(--wp--preset--color--ink)" },
+        ":hover": { "color": { "text": "var(--wp--preset--color--accent-2)" } }
+      }
+    }
+  },
+  "customTemplates": [
+    {
+      "name": "landing-page",
+      "title": "Landing Page (Lago Fazenda Canoa)",
+      "postTypes": [ "page" ]
+    }
+  ],
+  "templateParts": [
+    { "name": "header",           "title": "Header",           "area": "header" },
+    { "name": "footer",           "title": "Footer",           "area": "footer" },
+    { "name": "floating-widget",  "title": "Widget Flutuante", "area": "uncategorized" }
+  ]
+}

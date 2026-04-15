@@ -1,0 +1,64 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Node (caso futuramente adicione build tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# WordPress local state (caso o WP inteiro seja copiado)
+wp-config.php
+wp-config-local.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/debug.log
+wp-content/upgrade/
+wp-content/mu-plugins/
+
+# Arquivos originais gigantes (usamos versões otimizadas em /fotos-web/)
+fotos/
+videos/
+
+# Backups e arquivos temporários
+*.bak
+*.orig
+*.tmp
+/tmp/
+/temp/
+
+# Credenciais (nunca commitar)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+credentials.json
+
+# Screenshots de teste
+screenshots/
+.playwright-mcp/
+
+# Flywheel / Local by Flywheel
+conf/
+app/
+logs/

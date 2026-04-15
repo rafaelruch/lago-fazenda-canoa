@@ -1,0 +1,93 @@
+<!-- wp:html -->
+<!-- Widget flutuante (book + consultor + whatsapp) -->
+<aside class="float-bar" id="float-bar" aria-label="Atendimento rápido">
+  <button type="button" class="float-bar__close" id="float-bar-close" aria-label="Minimizar atendimento" title="Minimizar">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+  </button>
+  <button type="button" class="float-bar__btn float-bar__btn--book" data-capture="book">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2V5zM4 19h14"/><path d="M8 7h6"/></svg>
+    <span>Receber book</span>
+  </button>
+  <div class="float-bar__center">
+    <div class="float-bar__avatar" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+    </div>
+    <div class="float-bar__text">
+      <strong>Quer falar com um humano?</strong>
+      <span>Respondemos em minutos</span>
+    </div>
+  </div>
+  <a href="{{WHATSAPP_URL_HERO}}" target="_blank" rel="noopener" class="float-bar__btn float-bar__btn--wa">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9a12 12 0 001.6 6L0 24l6.3-1.7a12 12 0 005.7 1.5c6.6 0 11.9-5.3 11.9-11.9A11.8 11.8 0 0020.5 3.5zM12 22a10 10 0 01-5.1-1.4l-.4-.2-3.7 1 1-3.7-.3-.4A10 10 0 1122 12 10 10 0 0112 22zm5.5-7.5c-.3-.2-1.8-.9-2-1-.3 0-.5-.1-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7 0a8 8 0 01-2.3-1.4 9 9 0 01-1.6-2c-.2-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6a1 1 0 00-.8.4c-.3.3-1 1-1 2.4s1.1 2.9 1.3 3.1a11 11 0 004.2 3.7c.6.3 1 .4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.2 0-.2-.2-.2-.5-.4z"/></svg>
+    <span>Conversar por WhatsApp</span>
+  </a>
+</aside>
+
+<!-- Mini FAB (estado minimizado) -->
+<button type="button" class="float-mini" id="float-mini" aria-label="Reabrir atendimento" title="Atendimento Fazenda Canoa">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20l1.5-4.5A7.5 7.5 0 1116.5 18H6.5L3 20z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>
+  <span class="float-mini__badge" aria-hidden="true"></span>
+</button>
+
+<!-- Modal de captação -->
+<div class="modal" id="capture-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal__backdrop" data-modal-close></div>
+  <div class="modal__panel" role="document">
+    <button class="modal__close" aria-label="Fechar" type="button" data-modal-close>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6l-12 12"/></svg>
+    </button>
+
+    <div class="modal__header">
+      <span class="modal__eyebrow">Fazenda Canoa · Consultor dedicado</span>
+      <h2 id="modal-title" class="modal__title">Conheça a Fazenda Canoa</h2>
+      <p class="modal__subtitle" id="modal-subtitle">Preencha seus dados e um consultor retorna em instantes via WhatsApp.</p>
+    </div>
+
+    <form class="modal__form" id="capture-form" novalidate>
+      <input type="hidden" name="contexto" id="modal-context" value="">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+
+      <label class="field">
+        <span>Nome completo</span>
+        <input type="text" name="nome" required autocomplete="name" placeholder="Seu nome">
+      </label>
+      <label class="field">
+        <span>WhatsApp</span>
+        <input type="tel" name="telefone" required autocomplete="tel" placeholder="(62) 9 0000-0000">
+      </label>
+      <label class="field field--email">
+        <span>E-mail <span class="field__optional">(opcional)</span></span>
+        <input type="email" name="email" autocomplete="email" placeholder="voce@email.com">
+      </label>
+      <label class="field field--interest">
+        <span>Interesse</span>
+        <select name="interesse" id="modal-interest" required>
+          <option value="">Selecione...</option>
+          <option>Informações gerais</option>
+          <option>Lote frente-lago</option>
+          <option>Lote vista-lago</option>
+          <option>Lote bosque</option>
+          <option>Agendamento de visita</option>
+          <option>Simulação de pagamento</option>
+          <option>Alerta de preço</option>
+          <option>Book do empreendimento</option>
+        </select>
+      </label>
+
+      <button type="submit" class="btn btn--primary btn--block btn--lg modal__submit">
+        Enviar e conversar no WhatsApp
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+      <p class="modal__disclaimer">Ao enviar, você concorda em receber contato comercial da Fazenda Canoa. Seus dados ficam protegidos.</p>
+    </form>
+
+    <div class="modal__success" hidden>
+      <div class="modal__success-icon">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+      </div>
+      <h3>Recebemos seu contato!</h3>
+      <p>Estamos te redirecionando para o WhatsApp do consultor...</p>
+    </div>
+  </div>
+</div>
+<!-- /wp:html -->
