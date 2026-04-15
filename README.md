@@ -109,19 +109,31 @@ python3 -m http.server 4545
 ```
 > As fotos são referenciadas em `../fotos-web/` — mantenha a estrutura de pastas ao servir.
 
-### 2. Instalar no WordPress
-```bash
-# Copie para wp-content/themes/ e wp-content/plugins/
-cp -R wp/themes/fazenda-canoa /path/to/wordpress/wp-content/themes/
-cp -R wp/plugins/lfc-opcoes /path/to/wordpress/wp-content/plugins/
-```
+### 2. Instalar no WordPress (forma RECOMENDADA — via ZIPs)
+
+Baixe os pacotes prontos da pasta [`releases/`](releases/) e instale via WP admin:
+
+| Arquivo | Como instalar |
+|---|---|
+| [`releases/lfc-opcoes-plugin.zip`](releases/lfc-opcoes-plugin.zip) | Admin → Plugins → Adicionar → Carregar plugin |
+| [`releases/fazenda-canoa-theme.zip`](releases/fazenda-canoa-theme.zip) | Admin → Aparência → Temas → Adicionar → Carregar tema |
 
 Depois no admin do WordPress:
 1. **Plugins** → Ativar **"Fazenda Canoa — Opções & Leads"**
 2. **Aparência → Temas** → Ativar **"Fazenda Canoa"**
 3. **Configurações → Fazenda Canoa** → Revisar defaults e salvar
 
-Detalhes completos em [docs/INSTRUCOES-ATIVACAO.md](docs/INSTRUCOES-ATIVACAO.md).
+> ⚠️ **NÃO** baixe o repositório inteiro como ZIP e mande direto pra `wp-content/themes/` — isso faz o WP detectar várias pastas como temas inválidos (ex: `prototype/`).
+
+### 3. Instalar via filesystem (alternativa para devs)
+
+```bash
+# Copie APENAS o tema e o plugin para o WordPress
+cp -R wp/themes/fazenda-canoa /path/to/wordpress/wp-content/themes/
+cp -R wp/plugins/lfc-opcoes /path/to/wordpress/wp-content/plugins/
+```
+
+Detalhes completos em [docs/INSTRUCOES-ATIVACAO.md](docs/INSTRUCOES-ATIVACAO.md) e [releases/README.md](releases/README.md).
 
 ---
 
