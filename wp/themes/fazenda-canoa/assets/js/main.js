@@ -6,6 +6,47 @@
 (() => {
   'use strict';
 
+  // ---------- Analytics: dispara eventos de Lead (Meta Pixel + Google Ads) ----------
+  // Retorna uma Promise que resolve depois dos eventos serem enviados
+  const fireLeadEvents = (data) => {
+    return new Promise((resolve) => {
+      const cfg = window.FC_ANALYTICS || {};
+      const eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+      let fired = 0, target = 0;
+      const done = () => { fired++; if (fired >= target) resolve(eventId); };
+
+      // Meta Pixel — Lead com event_id para deduplicação server-side
+      if (cfg.metaPixelId && typeof window.fbq === 'function') {
+        target++;
+        try {
+          window.fbq('track', 'Lead', {
+            content_name: 'Formulario LP',
+            content_category: data && data.interesse ? data.interesse : 'Informações gerais',
+          }, { eventID: eventId });
+        } catch (e) {}
+        setTimeout(done, 50);
+      }
+
+      // Google Ads — conversion com transaction_id (deduplicação)
+      if (cfg.googleAdsConv && typeof window.gtag === 'function') {
+        target++;
+        try {
+          window.gtag('event', 'conversion', {
+            send_to: cfg.googleAdsConv,
+            transaction_id: eventId,
+          });
+        } catch (e) {}
+        setTimeout(done, 50);
+      }
+
+      // Se nenhum dos dois disparou, resolve imediatamente
+      if (target === 0) resolve(eventId);
+      // Timeout de segurança: no máximo 600ms aguardando
+      setTimeout(() => resolve(eventId), 600);
+    });
+  };
+  window.fireLeadEvents = fireLeadEvents;
+
   const hdr = document.getElementById('hdr');
   const burger = document.querySelector('.hdr__burger');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -190,7 +231,19 @@
 
     form.querySelector('.lead-form__success').hidden = false;
     form.querySelector('button[type="submit"]').disabled = true;
-    setTimeout(() => window.open(waUrl, '_blank', 'noopener'), 500);
+    // Dispara eventos de conversão ANTES do redirect (Meta Pixel Lead + Google Ads conversion + CAPI server-side)
+    fireLeadEvents(data).then((eventId) => {
+      // Atualiza chamada ao WP AJAX para incluir event_id (para CAPI deduplicação)
+      if (window.FC_AJAX) {
+        fetch(window.FC_AJAX.url, {
+          method: 'POST',
+          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, event_id: eventId, source: 'consultor-form' }),
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        }).catch(() => {});
+      }
+      setTimeout(() => window.open(waUrl, '_blank', 'noopener'), 200);
+    });
   });
 
   // ---------- 7. Reveal on scroll ----------
@@ -436,10 +489,21 @@
       }
     }
 
-    setTimeout(() => {
-      window.open(waUrl, '_blank', 'noopener');
-      setTimeout(closeModal, 1800);
-    }, 900);
+    // Dispara eventos de conversão antes do WhatsApp (Pixel + Google Ads + CAPI via WP)
+    fireLeadEvents(data).then((eventId) => {
+      if (window.FC_AJAX) {
+        fetch(window.FC_AJAX.url, {
+          method: 'POST',
+          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, event_id: eventId, source: isBookMode ? 'book' : 'modal' }),
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        }).catch(() => {});
+      }
+      setTimeout(() => {
+        window.open(waUrl, '_blank', 'noopener');
+        setTimeout(closeModal, 1800);
+      }, 500);
+    });
   });
 
   // ---------- 11. Widget flutuante — toggle entre expandido e mini FAB ----------
