@@ -85,6 +85,12 @@ add_action( 'wp_enqueue_scripts', function () {
 		'email'    => $opts['email']    ?? '',
 		'horario'  => $opts['horario']  ?? '',
 	] );
+	// FC_AJAX: garante que o form envia ao servidor (para CAPI) mesmo se o
+	// plugin não tiver injetado (fallback independente do plugin).
+	wp_add_inline_script( 'fc-main',
+		'window.FC_AJAX = window.FC_AJAX || { url: "' . esc_url_raw( admin_url( 'admin-ajax.php' ) ) . '", nonce: "' . wp_create_nonce( 'lfc_lead' ) . '" };',
+		'before'
+	);
 } );
 
 /**
