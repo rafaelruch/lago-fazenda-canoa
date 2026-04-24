@@ -226,14 +226,11 @@
     } catch (_) {}
     console.log('[LEAD CAPTURED]', record);
 
-    const msg = `Olá! Meu nome é ${data.nome}. WhatsApp: ${data.telefone}. Interesse: ${data.interesse}. Vim pela página da Fazenda Canoa (formulário consultor).`;
-    const waUrl = `https://wa.me/5562999593530?text=${encodeURIComponent(msg)}`;
-
     form.querySelector('.lead-form__success').hidden = false;
     form.querySelector('button[type="submit"]').disabled = true;
-    // Dispara eventos de conversão ANTES do redirect (Meta Pixel Lead + Google Ads conversion + CAPI server-side)
+    // Dispara eventos de conversão (Meta Pixel Lead + Google Ads conversion + CAPI server-side)
     fireLeadEvents(data).then((eventId) => {
-      // Atualiza chamada ao WP AJAX para incluir event_id (para CAPI deduplicação)
+      // Envia para o endpoint AJAX com event_id para deduplicação CAPI; webhook ImobMeet é disparado server-side.
       if (window.FC_AJAX) {
         fetch(window.FC_AJAX.url, {
           method: 'POST',
@@ -242,7 +239,6 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         }).catch(() => {});
       }
-      setTimeout(() => window.open(waUrl, '_blank', 'noopener'), 200);
     });
   });
 
@@ -309,7 +305,7 @@
     hero: {
       eyebrow: 'Fazenda Canoa · Consultor dedicado',
       title: 'Conheça a Fazenda Canoa',
-      subtitle: 'Preencha seus dados e um consultor retorna em instantes com informações completas pelo WhatsApp.',
+      subtitle: 'Preencha seus dados e um consultor retorna em breve com todas as informações.',
       interest: 'Informações gerais',
     },
     oferta: {
@@ -357,16 +353,16 @@
     consultor: {
       eyebrow: 'Atendimento especializado',
       title: 'Falar com um consultor',
-      subtitle: 'Resposta garantida no mesmo dia útil. Seu consultor dedicado te atende no WhatsApp.',
+      subtitle: 'Resposta garantida no mesmo dia útil. Seu consultor dedicado retorna com todas as informações.',
       interest: 'Informações gerais',
     },
     book: {
       eyebrow: 'Material exclusivo',
-      title: 'Receba o book completo por WhatsApp',
-      subtitle: 'Plantas, diferenciais, infraestrutura e condições comerciais — enviado direto no seu WhatsApp em minutos.',
+      title: 'Receba o book completo',
+      subtitle: 'Plantas, diferenciais, infraestrutura e condições comerciais da Reserva Fazenda Canoa.',
       interest: 'Book do empreendimento',
       mode: 'book',
-      submitLabel: 'Receber book por WhatsApp',
+      submitLabel: 'Solicitar book',
     },
   };
 
@@ -404,7 +400,7 @@
       const btn = modalForm.querySelector('.modal__submit');
       btn.disabled = false;
       // Troca o label do botão conforme o contexto
-      const label = ctx.submitLabel || 'Enviar e conversar no WhatsApp';
+      const label = ctx.submitLabel || 'Solicitar contato';
       btn.innerHTML = label + ' <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
     }
 
@@ -433,7 +429,7 @@
     if (e.key === 'Escape' && modal?.getAttribute('aria-hidden') === 'false') closeModal();
   });
 
-  // Submit do modal → persiste + abre WhatsApp
+  // Submit do modal → persiste + dispara webhook (ImobMeet) via plugin lfc-opcoes
   modalForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(modalForm));
@@ -460,19 +456,6 @@
     } catch (_) {}
     console.log('[LEAD CAPTURED]', record);
 
-    // POST para WP em paralelo (não bloqueia WhatsApp)
-    submitLeadToWP({ ...data, source: isBookMode ? 'book' : 'modal' });
-
-    // Monta mensagem contextualizada (diferente se for book)
-    let msg;
-    if (isBookMode) {
-      msg = `Olá! Meu nome é ${data.nome}. WhatsApp: ${data.telefone}. Gostaria de receber o *book completo* da Reserva Fazenda Canoa.`;
-    } else {
-      const emailPart = data.email ? ` E-mail: ${data.email}.` : '';
-      msg = `Olá! Meu nome é ${data.nome}. WhatsApp: ${data.telefone}.${emailPart} Interesse: ${data.interesse}. Vim pela landing page da Fazenda Canoa (${data.contexto || 'geral'}).`;
-    }
-    const waUrl = `https://wa.me/5562999593530?text=${encodeURIComponent(msg)}`;
-
     // Mostra success state
     modalForm.hidden = true;
     const successEl = modal.querySelector('.modal__success');
@@ -481,15 +464,16 @@
       const h3 = successEl.querySelector('h3');
       const p = successEl.querySelector('p');
       if (isBookMode) {
-        if (h3) h3.textContent = 'Enviando seu book!';
-        if (p) p.textContent = 'Estamos abrindo o WhatsApp para enviar o book completo...';
+        if (h3) h3.textContent = 'Recebemos seu pedido!';
+        if (p) p.textContent = 'Em breve enviamos o book completo pra você.';
       } else {
         if (h3) h3.textContent = 'Recebemos seu contato!';
-        if (p) p.textContent = 'Estamos te redirecionando para o WhatsApp do consultor...';
+        if (p) p.textContent = 'Em breve um consultor entra em contato com você.';
       }
     }
 
-    // Dispara eventos de conversão antes do WhatsApp (Pixel + Google Ads + CAPI via WP)
+    // Dispara eventos de conversão (Pixel + Google Ads + CAPI via WP) e envia para o endpoint AJAX.
+    // O webhook ImobMeet é disparado server-side pelo plugin lfc-opcoes-plugin.
     fireLeadEvents(data).then((eventId) => {
       if (window.FC_AJAX) {
         fetch(window.FC_AJAX.url, {
@@ -499,10 +483,6 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         }).catch(() => {});
       }
-      setTimeout(() => {
-        window.open(waUrl, '_blank', 'noopener');
-        setTimeout(closeModal, 1800);
-      }, 500);
     });
   });
 

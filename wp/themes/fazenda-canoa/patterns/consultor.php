@@ -46,7 +46,7 @@
 
     <form class="lead-form" id="lead-form" novalidate>
       <h3>Deixe seu contato</h3>
-      <p>Um consultor retorna em instantes pelo WhatsApp.</p>
+      <p>Um consultor retorna em breve com todas as informações.</p>
 
       <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
 
@@ -71,7 +71,7 @@
 
       <button type="submit" class="btn btn--primary btn--block">Solicitar contato</button>
       <p class="lead-form__disclaimer">Ao enviar, você concorda em receber contato do time comercial.</p>
-      <p class="lead-form__success" hidden>✓ Recebemos seu contato. Estamos te chamando no WhatsApp.</p>
+      <p class="lead-form__success" hidden>✓ Recebemos seu contato! Em breve um consultor entra em contato com você.</p>
     </form>
   </div>
 </section>

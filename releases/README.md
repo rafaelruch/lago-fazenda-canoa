@@ -4,10 +4,15 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 ## Arquivos
 
-| Arquivo | O que é | Tamanho |
-|---|---|---|
-| `fazenda-canoa-theme.zip` | Tema (block theme custom) | ~19 MB |
-| `lfc-opcoes-plugin.zip`   | Plugin de opções + leads + webhook | ~12 KB |
+| Arquivo | Versão | O que é | Tamanho |
+|---|---|---|---|
+| `fazenda-canoa-theme.zip` | **1.1.0** | Tema (block theme custom) | ~19 MB |
+| `lfc-opcoes-plugin.zip`   | **1.0.1** | Plugin de opções + leads + webhook ImobMeet | ~10 KB |
+
+### Mudanças na v1.1.0 (tema) e v1.0.1 (plugin) — 2026-04-24
+
+- **Plugin:** webhook ImobMeet hardcoded como default (`LFC_DEFAULT_WEBHOOK_URL`) com fallback. Leads chegam ao CRM mesmo sem configurar nada no admin.
+- **Tema:** removido o redirect para WhatsApp após submit do formulário. Agora o form mostra apenas a confirmação ("Recebemos seu contato! Em breve um consultor entra em contato com você.") e o lead vai pro CRM via webhook do plugin.
 
 ---
 
