@@ -217,6 +217,13 @@
       alert('Preencha nome, WhatsApp e interesse para continuar.');
       return;
     }
+    const phoneDigits = String(data.telefone).replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+      const tel = form.querySelector('input[name="telefone"]');
+      if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
+      return;
+    }
 
     const record = { ...data, timestamp: new Date().toISOString(), source: 'consultor-form' };
     try {
@@ -438,6 +445,13 @@
     // Validação: book precisa só de nome + telefone; outros precisam também de interesse
     if (!data.nome || !data.telefone) {
       alert('Preencha seu nome e WhatsApp para continuar.');
+      return;
+    }
+    const phoneDigits = String(data.telefone).replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+      const tel = modalForm.querySelector('input[name="telefone"]');
+      if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
       return;
     }
     if (!isBookMode && !data.interesse) {
