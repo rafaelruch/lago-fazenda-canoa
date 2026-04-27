@@ -6,8 +6,13 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.3.0** | Tema (block theme custom) | ~19 MB |
-| `lfc-opcoes-plugin.zip`   | **1.0.3** | Plugin de opções + leads + webhook ImobMeet + UTM tracking | ~11 KB |
+| `fazenda-canoa-theme.zip` | **1.4.0** | Tema (block theme custom) | ~19 MB |
+| `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.4.0 (tema) e v1.0.4 (plugin) — 2026-04-27
+
+- **Tema v1.4.0 (feature):** novo modal de captura mínima (nome + telefone) ativado em **todos os CTAs WhatsApp** do site (header mobile, floating widget, footer, card de canal na seção consultor). Antes de redirecionar pro `wa.me`, o usuário preenche o modal, os dados são salvos no CPT `lfc_lead` e enviados via webhook secundário ImobMeet (`flow=whatsapp`). A `wa.me` é aberta em nova aba com o nome pré-preenchido na mensagem.
+- **Plugin v1.0.4 (feature):** suporte a webhook secundário (`webhook_url_whatsapp`) com roteamento por campo `flow` no POST AJAX. `flow=main` (default) usa webhook principal; `flow=whatsapp` usa webhook secundário. Constantes default `LFC_DEFAULT_WEBHOOK_URL` e `LFC_DEFAULT_WEBHOOK_WHATSAPP_URL`. Admin com 2 novos campos (URL + secret) na seção "Webhook secundário". O metabox `webhook_status` agora inclui o flow no log (`dispatched [whatsapp] (HTTP 200)`).
 
 ### Mudanças na v1.3.0 (tema) e v1.0.3 (plugin) — 2026-04-27
 

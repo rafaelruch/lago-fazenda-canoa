@@ -595,4 +595,113 @@
     input.addEventListener('blur', apply);
     if (input.value) apply();
   });
+
+  // ---------- 14. WhatsApp capture flow ----------
+  // Intercepta TODOS os CTAs marcados com [data-wa-capture] (header, footer,
+  // floating-widget, card consultor). Abre modal mínimo (nome + telefone),
+  // submete via AJAX com flow=whatsapp (dispara webhook secundário ImobMeet),
+  // depois abre o wa.me original em nova aba.
+  const waModal = document.getElementById('wa-capture-modal');
+  const waForm = document.getElementById('wa-capture-form');
+  const waContextField = document.getElementById('wa-capture-context');
+  let waPendingUrl = '';
+  let waLastFocused = null;
+
+  const openWaModal = (waUrl, contexto) => {
+    if (!waModal) {
+      // Fallback: se o modal não está no DOM, abre wa.me direto
+      window.open(waUrl, '_blank', 'noopener');
+      return;
+    }
+    waPendingUrl = waUrl;
+    if (waContextField) waContextField.value = contexto || 'wa-direto';
+    if (waForm) {
+      waForm.hidden = false;
+      const btn = waForm.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = false;
+    }
+    const successEl = waModal.querySelector('.modal__success');
+    if (successEl) successEl.hidden = true;
+
+    waLastFocused = document.activeElement;
+    waModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    setTimeout(() => waModal.querySelector('input[name="nome"]')?.focus(), 200);
+  };
+  const closeWaModal = () => {
+    if (!waModal) return;
+    waModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (waForm) waForm.reset();
+    if (waLastFocused?.focus) waLastFocused.focus();
+  };
+
+  // Intercepta clicks em [data-wa-capture]
+  document.querySelectorAll('[data-wa-capture]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const waUrl = el.getAttribute('href') || el.dataset.waUrl || '';
+      if (!waUrl || !waUrl.includes('wa.me')) return; // não é link wa.me, deixa passar
+      e.preventDefault();
+      openWaModal(waUrl, el.dataset.waCapture || 'wa-direto');
+    });
+  });
+
+  // Fechar modal (backdrop, botão X, ESC)
+  waModal?.querySelectorAll('[data-modal-close]').forEach((el) => el.addEventListener('click', closeWaModal));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && waModal?.getAttribute('aria-hidden') === 'false') closeWaModal();
+  });
+
+  // Submit do form
+  waForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(waForm));
+    if (!data.nome || !data.telefone) {
+      alert('Preencha seu nome e WhatsApp para continuar.');
+      return;
+    }
+    const phoneDigits = String(data.telefone).replace(/\D/g, '');
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
+      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+      const tel = waForm.querySelector('input[name="telefone"]');
+      if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
+      return;
+    }
+
+    // Mostra success state imediatamente (UX rápida — webhook é fire-and-forget no front)
+    waForm.hidden = true;
+    const successEl = waModal.querySelector('.modal__success');
+    if (successEl) successEl.hidden = false;
+
+    // Dispatcha lead para WP (flow=whatsapp → webhook secundário ImobMeet)
+    fireLeadEvents(data).then((eventId) => {
+      if (window.FC_AJAX) {
+        fetch(window.FC_AJAX.url, {
+          method: 'POST',
+          body: new URLSearchParams({
+            action: 'lfc_submit_lead',
+            _nonce: window.FC_AJAX.nonce,
+            ...data,
+            ...getUTMPayload(),
+            event_id: eventId,
+            source: 'wa-' + (data.contexto || 'direto'),
+            flow: 'whatsapp',
+            interesse: 'Atendimento WhatsApp',
+          }),
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        }).catch(() => {});
+      }
+    });
+
+    // Abre wa.me com o nome do usuário pré-preenchido na mensagem
+    const msg = `Olá! Meu nome é ${data.nome}. Vim pela página da Fazenda Canoa.`;
+    const url = waPendingUrl.includes('?text=')
+      ? waPendingUrl
+      : (waPendingUrl + (waPendingUrl.includes('?') ? '&' : '?') + 'text=' + encodeURIComponent(msg));
+
+    // Pequeno delay pra animação aparecer antes do popup abrir
+    setTimeout(() => window.open(url, '_blank', 'noopener'), 300);
+    setTimeout(closeWaModal, 1800);
+  });
 })();

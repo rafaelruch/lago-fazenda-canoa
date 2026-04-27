@@ -15,7 +15,7 @@
       <p>Um consultor dedicado vai te apresentar plantas, disponibilidades, condições comerciais e agendar sua visita — presencial ou virtual.</p>
 
       <div class="consultor__channels">
-        <a href="<?php echo esc_url( $wa_url ); ?>" class="ch-card ch-card--wa" rel="noopener">
+        <a href="<?php echo esc_url( $wa_url ); ?>" class="ch-card ch-card--wa" rel="noopener" data-wa-capture="consultor-card">
           <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0012 0C5.4 0 .1 5.3.1 11.9a12 12 0 001.6 6L0 24l6.3-1.7a12 12 0 005.7 1.5c6.6 0 11.9-5.3 11.9-11.9A11.8 11.8 0 0020.5 3.5zM12 22a10 10 0 01-5.1-1.4l-.4-.2-3.7 1 1-3.7-.3-.4A10 10 0 1122 12 10 10 0 0112 22zm5.5-7.5c-.3-.2-1.8-.9-2-1-.3 0-.5-.1-.7.2s-.8.9-1 1.1c-.2.2-.4.2-.7 0a8 8 0 01-2.3-1.4 9 9 0 01-1.6-2c-.2-.2 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.4l-1-2.2c-.2-.6-.5-.5-.7-.5h-.6a1 1 0 00-.8.4c-.3.3-1 1-1 2.4s1.1 2.9 1.3 3.1a11 11 0 004.2 3.7c.6.3 1 .4 1.5.5.6.1 1.2.1 1.6 0 .5-.1 1.6-.7 1.8-1.3.2-.6.2-1.1.2-1.2 0-.2-.2-.2-.5-.4z"/></svg>
           <div>
             <span class="ch-card__label">WhatsApp</span>
