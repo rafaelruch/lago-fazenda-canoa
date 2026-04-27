@@ -6,6 +6,37 @@
 (() => {
   'use strict';
 
+  // ---------- UTM Tracking: captura UTMs da URL e persiste em localStorage ----------
+  // Spec do cliente — exatamente os 7 utm_* dos exemplos Meta Ads + Google Ads.
+  // Comportamento: se URL atual tem UTM, sobrescreve localStorage (last-touch).
+  // Se URL não tem UTM, lê do localStorage (UTM da visita anterior persiste).
+  const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_device', 'utm_network'];
+  const UTM_STORAGE_KEY = 'fcanoa_utms';
+  const captureUTMs = () => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const fromURL = {};
+      let hasAny = false;
+      UTM_KEYS.forEach((k) => {
+        const v = params.get(k);
+        if (v) { fromURL[k] = v; hasAny = true; }
+      });
+      if (hasAny) {
+        try { localStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fromURL)); } catch (_) {}
+        return fromURL;
+      }
+      const stored = localStorage.getItem(UTM_STORAGE_KEY);
+      return stored ? JSON.parse(stored) : {};
+    } catch (_) { return {}; }
+  };
+  const getUTMPayload = () => {
+    const utms = captureUTMs();
+    return { ...utms, landing_url: window.location.href };
+  };
+  // Captura na carga da página (garante que UTMs da URL sejam salvos antes de qualquer submit)
+  captureUTMs();
+  window.fcGetUTMPayload = getUTMPayload;
+
   // ---------- Analytics: dispara eventos de Lead (Meta Pixel + Google Ads) ----------
   // Retorna uma Promise que resolve depois dos eventos serem enviados
   const fireLeadEvents = (data) => {
@@ -241,7 +272,7 @@
       if (window.FC_AJAX) {
         fetch(window.FC_AJAX.url, {
           method: 'POST',
-          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, event_id: eventId, source: 'consultor-form' }),
+          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, ...getUTMPayload(), event_id: eventId, source: 'consultor-form' }),
           credentials: 'same-origin',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         }).catch(() => {});
@@ -492,7 +523,7 @@
       if (window.FC_AJAX) {
         fetch(window.FC_AJAX.url, {
           method: 'POST',
-          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, event_id: eventId, source: isBookMode ? 'book' : 'modal' }),
+          body: new URLSearchParams({ action: 'lfc_submit_lead', _nonce: window.FC_AJAX.nonce, ...data, ...getUTMPayload(), event_id: eventId, source: isBookMode ? 'book' : 'modal' }),
           credentials: 'same-origin',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         }).catch(() => {});
