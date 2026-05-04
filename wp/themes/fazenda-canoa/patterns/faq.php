@@ -18,7 +18,7 @@
     </details>
     <details class="faq__item">
       <summary>Qual a faixa de preço dos lotes?</summary>
-      <div class="faq__body">Lotes a partir de <strong>R$ 360.000</strong>, com valores que variam conforme tipologia (frente-lago, vista-lago, bosque) e disponibilidade. Parcelamento direto com a incorporadora FRSC. Solicite uma tabela personalizada pelo WhatsApp <?php echo esc_html( do_shortcode('[lfc_whatsapp]') ); ?>.</div>
+      <div class="faq__body">Lotes a partir de <strong>R$ 419.000,00</strong>, com valores que variam conforme tipologia (frente-lago, vista-lago, bosque) e disponibilidade. Parcelamento direto com a incorporadora FRSC. Solicite uma tabela personalizada pelo WhatsApp <?php echo esc_html( do_shortcode('[lfc_whatsapp]') ); ?>.</div>
     </details>
     <details class="faq__item">
       <summary>Quais tamanhos (metragens) de lote estão disponíveis?</summary>

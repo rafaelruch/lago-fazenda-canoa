@@ -62,7 +62,7 @@ A página inteira da LP é composta por **9 seções** (Hero, Oferta, Tipologias
 - **Títulos** (headlines)
 - **Parágrafos** (descrições)
 - **Textos dos botões** (CTAs)
-- **Preços** (ex: "A partir de R$ 360.000")
+- **Preços** (ex: "A partir de R$ 419.000,00")
 - **Itens do FAQ** (perguntas e respostas)
 
 ### Cuidados:

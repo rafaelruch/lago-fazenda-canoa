@@ -59,7 +59,7 @@
   <div class="hero__info-row">
     <div class="hero__price">
       <span class="hero__price-label">Lotes a partir de</span>
-      <span class="hero__price-value">R$ 360.000</span>
+      <span class="hero__price-value">R$ 419.000,00</span>
       <span class="hero__price-note">Parcelamento direto com a incorporadora</span>
     </div>
     <div class="hero__ctas">

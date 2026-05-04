@@ -18,7 +18,7 @@
     </div>
     <div class="features__body">
       <h2 class="features__title">Lote padrão</h2>
-      <p class="features__price">A partir de <strong>R$ 360.000</strong><span>parcelamento direto · condições FRSC</span></p>
+      <p class="features__price">A partir de <strong>R$ 419.000,00</strong><span>parcelamento direto · condições FRSC</span></p>
 
       <ul class="features__grid">
         <li><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 3v18"/></svg><span>Metragem sob consulta</span></li>

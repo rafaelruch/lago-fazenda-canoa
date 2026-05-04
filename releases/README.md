@@ -6,7 +6,7 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.4.0** | Tema (block theme custom) | ~19 MB |
+| `fazenda-canoa-theme.zip` | **1.4.1** | Tema (block theme custom) | ~19 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
 
 ### Mudanças na v1.4.0 (tema) e v1.0.4 (plugin) — 2026-04-27
