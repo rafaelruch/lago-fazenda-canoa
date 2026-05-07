@@ -249,8 +249,8 @@
       return;
     }
     const phoneDigits = String(data.telefone).replace(/\D/g, '');
-    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
-      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+    if (phoneDigits.length !== 11) {
+      alert('WhatsApp inválido. Informe DDD + 9 dígitos do celular (11 dígitos no total).');
       const tel = form.querySelector('input[name="telefone"]');
       if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
       return;
@@ -479,8 +479,8 @@
       return;
     }
     const phoneDigits = String(data.telefone).replace(/\D/g, '');
-    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
-      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+    if (phoneDigits.length !== 11) {
+      alert('WhatsApp inválido. Informe DDD + 9 dígitos do celular (11 dígitos no total).');
       const tel = modalForm.querySelector('input[name="telefone"]');
       if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
       return;
@@ -661,8 +661,8 @@
       return;
     }
     const phoneDigits = String(data.telefone).replace(/\D/g, '');
-    if (phoneDigits.length < 10 || phoneDigits.length > 11) {
-      alert('WhatsApp inválido. Informe DDD + número (10 ou 11 dígitos).');
+    if (phoneDigits.length !== 11) {
+      alert('WhatsApp inválido. Informe DDD + 9 dígitos do celular (11 dígitos no total).');
       const tel = waForm.querySelector('input[name="telefone"]');
       if (tel) { tel.classList.add('field--invalid'); tel.focus(); setTimeout(() => tel.classList.remove('field--invalid'), 1200); }
       return;
