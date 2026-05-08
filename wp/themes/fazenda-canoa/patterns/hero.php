@@ -32,7 +32,7 @@
     </p>
 
     <div class="hero__status">
-      <span class="tag tag--ok"><span class="tag__dot"></span>Lançamento II em comercialização</span>
+      <span class="tag tag--ok"><span class="tag__dot"></span>Empreendimento pronto para morar</span>
       <span class="tag">2.000 m de orla privativa</span>
       <span class="tag">+500 mil m² de área verde</span>
     </div>
@@ -65,7 +65,7 @@
     <div class="hero__ctas">
       <button type="button" class="btn btn--primary btn--lg" data-capture="hero">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4l-2.4-.7c-.3-.1-.7 0-.9.2l-1 .9a7.6 7.6 0 01-3.3-3.3l.9-1c.2-.2.3-.6.2-.9l-.7-2.4a1 1 0 00-1-.7H7a1 1 0 00-1 1 10 10 0 0010 10 1 1 0 001-1v-1.4a1 1 0 00-.7-1zM12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
-        Falar com consultor
+        Falar com um especialista Fazenda Canoa
       </button>
       <a href="#tipologias" class="btn btn--outline btn--lg">Ver tipologias</a>
     </div>

@@ -1821,3 +1821,167 @@ html:has(body.admin-bar) { scroll-padding-top: calc(var(--hdr-h) + 32px + 16px);
   body.admin-bar .mobile-menu      { top: var(--hdr-h); }
   html:has(body.admin-bar) { scroll-padding-top: calc(var(--hdr-h) + 16px); }
 }
+
+/* ============================================================
+   PHOTO LIGHTBOX (galeria "Ver todas as fotos" do hero)
+   ============================================================ */
+.photo-lightbox {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 10, 0.96);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+.photo-lightbox[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.photo-lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px; height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur);
+}
+.photo-lightbox__close:hover { background: rgba(255, 255, 255, 0.2); }
+.photo-lightbox__stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: calc(100vh - 180px);
+  padding: 1rem;
+  position: relative;
+}
+.photo-lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.photo-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: background var(--dur), transform var(--dur);
+}
+.photo-lightbox__nav:hover { background: rgba(255, 255, 255, 0.28); transform: translateY(-50%) scale(1.06); }
+.photo-lightbox__nav--prev { left: 1rem; }
+.photo-lightbox__nav--next { right: 1rem; }
+.photo-lightbox__counter {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 0;
+}
+.photo-lightbox__thumbs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 1.2rem;
+  overflow-x: auto;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+.photo-lightbox__thumbs::-webkit-scrollbar { height: 6px; }
+.photo-lightbox__thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+.photo-lightbox__thumb {
+  flex: 0 0 auto;
+  width: 76px; height: 56px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  scroll-snap-align: center;
+  opacity: 0.55;
+  transition: opacity var(--dur), border-color var(--dur), transform var(--dur);
+}
+.photo-lightbox__thumb:hover { opacity: 0.85; }
+.photo-lightbox__thumb.is-active {
+  opacity: 1;
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+.photo-lightbox__thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .photo-lightbox__nav { width: 40px; height: 40px; font-size: 1.4rem; }
+  .photo-lightbox__thumb { width: 60px; height: 44px; }
+  .photo-lightbox__close { top: 0.6rem; right: 0.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-lightbox,
+  .photo-lightbox__nav,
+  .photo-lightbox__thumb { transition: none; }
+}
+
+/* ============================================================
+   VINÍCOLA COSTA CAVE — section reaproveita .features mas com vídeo
+   ============================================================ */
+.features--vinicola { padding-top: var(--s-9); padding-bottom: var(--s-9); }
+.features__media--video {
+  /* Vídeo ocupa toda a área, com object-fit cover (mesmo comportamento das imagens). */
+  background: #000;
+}
+.features__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.features__lede {
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--c-text-2);
+  margin: 0;
+}
+.features__quote {
+  border-left: 3px solid var(--c-accent);
+  padding: 0.4rem 0 0.4rem 1rem;
+  color: var(--c-text-2);
+  font-size: 0.94rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.features__quote em { font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  .features__video { animation: none; }
+}

@@ -13,7 +13,7 @@
       <img src="<?php echo esc_url( get_theme_file_uri( 'assets/fotos/15.jpg' ) ); ?>" alt="Entrada da Fazenda Canoa" loading="lazy">
     </div>
     <div class="offer__body">
-      <span class="offer__pill">Lançamento II · em comercialização</span>
+      <span class="offer__pill">Empreendimento pronto para morar</span>
       <h2 class="offer__title">Nova fase com lotes em posições privilegiadas</h2>
       <p class="offer__desc">Lotes à beira do Lago Corumbá IV — com acesso privativo à orla, à marina e ao Beach Club. Entrada facilitada e parcelamento direto com a incorporadora FRSC.</p>
       <ul class="offer__list">

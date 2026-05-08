@@ -390,8 +390,8 @@
     },
     consultor: {
       eyebrow: 'Atendimento especializado',
-      title: 'Falar com um consultor',
-      subtitle: 'Resposta garantida no mesmo dia útil. Seu consultor dedicado retorna com todas as informações.',
+      title: 'Falar com um especialista Fazenda Canoa',
+      subtitle: 'Resposta garantida no mesmo dia útil. Seu especialista dedicado retorna com todas as informações.',
       interest: 'Informações gerais',
     },
     book: {
@@ -704,4 +704,102 @@
     setTimeout(() => window.open(url, '_blank', 'noopener'), 300);
     setTimeout(closeWaModal, 1800);
   });
+
+  // ---------- 15. Lightbox "Ver todas as fotos" ----------
+  // Botão .hero__all-photos abre um lightbox fullscreen com as 37 fotos.
+  // Construído dinamicamente — não exige HTML extra nos patterns.
+  const allPhotosBtn = document.querySelector('.hero__all-photos');
+  if (allPhotosBtn) {
+    // Encontra a base URL das fotos a partir do banner do hero
+    const heroBannerImg = document.querySelector('.hero__banner-img');
+    const baseMatch = heroBannerImg ? heroBannerImg.src.match(/^(.+\/)\d+\.jpg/) : null;
+    const photosBase = baseMatch ? baseMatch[1] : null;
+    const PHOTO_COUNT = 37;
+
+    if (photosBase) {
+      // Cria o lightbox uma única vez
+      const lb = document.createElement('div');
+      lb.className = 'photo-lightbox';
+      lb.id = 'photo-lightbox';
+      lb.setAttribute('aria-hidden', 'true');
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.innerHTML = `
+        <button class="photo-lightbox__close" type="button" aria-label="Fechar galeria">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <button class="photo-lightbox__nav photo-lightbox__nav--prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="photo-lightbox__nav photo-lightbox__nav--next" type="button" aria-label="Próxima foto">›</button>
+        <div class="photo-lightbox__stage">
+          <img class="photo-lightbox__img" alt="" />
+        </div>
+        <div class="photo-lightbox__counter" aria-live="polite">1 / ${PHOTO_COUNT}</div>
+        <div class="photo-lightbox__thumbs" role="tablist" aria-label="Miniaturas"></div>
+      `;
+      document.body.appendChild(lb);
+
+      const lbImg = lb.querySelector('.photo-lightbox__img');
+      const lbCounter = lb.querySelector('.photo-lightbox__counter');
+      const lbThumbs = lb.querySelector('.photo-lightbox__thumbs');
+      const lbPrev = lb.querySelector('.photo-lightbox__nav--prev');
+      const lbNext = lb.querySelector('.photo-lightbox__nav--next');
+      const lbClose = lb.querySelector('.photo-lightbox__close');
+
+      // Popula thumbs (1..37)
+      for (let i = 1; i <= PHOTO_COUNT; i++) {
+        const num = String(i).padStart(2, '0');
+        const t = document.createElement('button');
+        t.type = 'button';
+        t.className = 'photo-lightbox__thumb';
+        t.setAttribute('role', 'tab');
+        t.setAttribute('aria-label', `Foto ${i} de ${PHOTO_COUNT}`);
+        t.dataset.idx = String(i - 1);
+        t.innerHTML = `<img src="${photosBase}${num}.jpg" alt="" loading="lazy">`;
+        lbThumbs.appendChild(t);
+      }
+      const thumbs = Array.from(lbThumbs.querySelectorAll('.photo-lightbox__thumb'));
+
+      let currentIdx = 0;
+      const showAt = (idx) => {
+        currentIdx = ((idx % PHOTO_COUNT) + PHOTO_COUNT) % PHOTO_COUNT;
+        const num = String(currentIdx + 1).padStart(2, '0');
+        lbImg.src = `${photosBase}${num}.jpg`;
+        lbImg.alt = `Foto ${currentIdx + 1} da Reserva Fazenda Canoa`;
+        lbCounter.textContent = `${currentIdx + 1} / ${PHOTO_COUNT}`;
+        thumbs.forEach((t, i) => t.classList.toggle('is-active', i === currentIdx));
+        // Scroll thumb ativa para o centro da faixa
+        thumbs[currentIdx]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      };
+      const openLb = (idx = 0) => {
+        showAt(idx);
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+      const closeLb = () => {
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+
+      allPhotosBtn.addEventListener('click', () => openLb(0));
+      lbClose.addEventListener('click', closeLb);
+      lbPrev.addEventListener('click', () => showAt(currentIdx - 1));
+      lbNext.addEventListener('click', () => showAt(currentIdx + 1));
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+      thumbs.forEach((t) => t.addEventListener('click', () => showAt(parseInt(t.dataset.idx, 10))));
+      document.addEventListener('keydown', (e) => {
+        if (lb.getAttribute('aria-hidden') === 'true') return;
+        if (e.key === 'Escape') closeLb();
+        else if (e.key === 'ArrowLeft') showAt(currentIdx - 1);
+        else if (e.key === 'ArrowRight') showAt(currentIdx + 1);
+      });
+
+      // Suporte touch (swipe horizontal)
+      let touchStartX = 0;
+      lb.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) showAt(dx < 0 ? currentIdx + 1 : currentIdx - 1);
+      }, { passive: true });
+    }
+  }
 })();
