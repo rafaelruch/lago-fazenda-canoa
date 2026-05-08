@@ -17,12 +17,10 @@
   <div class="leisure__gallery" id="leisure-gallery">
     <button class="gallery__nav gallery__nav--prev" aria-label="Foto anterior">‹</button>
     <div class="gallery__track">
-      <figure class="gallery__slide is-active"><img src="<?php echo esc_url( "$dir/22.jpg" ); ?>" alt="Heliponto e lago"><figcaption>Heliponto + vista do lago</figcaption></figure>
-      <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/12.jpg" ); ?>" alt="Vinícola Costa Cave"><figcaption>Vinícola Costa Cave</figcaption></figure>
+      <figure class="gallery__slide is-active"><img src="<?php echo esc_url( "$dir/12.jpg" ); ?>" alt="Vinícola Costa Cave"><figcaption>Vinícola Costa Cave</figcaption></figure>
       <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/28.jpg" ); ?>" alt="Complexo esportivo"><figcaption>Complexo esportivo</figcaption></figure>
       <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/08.jpg" ); ?>" alt="Pavilhão Social"><figcaption>Pavilhão Social</figcaption></figure>
       <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/15.jpg" ); ?>" alt="Portaria em pedra"><figcaption>Portaria principal</figcaption></figure>
-      <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/33.jpg" ); ?>" alt="Quadra de basquete"><figcaption>Quadra de basquete</figcaption></figure>
       <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/03.jpg" ); ?>" alt="Estar social"><figcaption>Estar social</figcaption></figure>
       <figure class="gallery__slide"><img src="<?php echo esc_url( "$dir/02.jpg" ); ?>" alt="Detalhe Pavilhão"><figcaption>Arquitetura autoral</figcaption></figure>
     </div>

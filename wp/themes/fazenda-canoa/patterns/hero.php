@@ -39,7 +39,7 @@
   </div>
 
   <div class="hero__banner">
-    <img class="hero__banner-img" src="<?php echo esc_url( "$dir/22.jpg" ); ?>" alt="Vista aérea da Reserva Fazenda Canoa com heliponto, quadras esportivas e Lago Corumbá IV ao fundo" loading="eager" fetchpriority="high">
+    <img class="hero__banner-img" src="<?php echo esc_url( "$dir/28.jpg" ); ?>" alt="Vista aérea do complexo esportivo da Reserva Fazenda Canoa com Lago Corumbá IV ao fundo" loading="eager" fetchpriority="high">
     <button class="hero__all-photos" type="button" aria-label="Ver todas as fotos">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       Ver todas as fotos (37)
@@ -47,13 +47,11 @@
   </div>
 
   <div class="hero__thumbs" aria-label="Miniaturas do empreendimento">
-    <button class="hero__thumb is-active" data-src="<?php echo esc_url( "$dir/22.jpg" ); ?>" aria-label="Vista aérea"><img src="<?php echo esc_url( "$dir/22.jpg" ); ?>" alt=""></button>
+    <button class="hero__thumb is-active" data-src="<?php echo esc_url( "$dir/28.jpg" ); ?>" aria-label="Complexo Esportivo"><img src="<?php echo esc_url( "$dir/28.jpg" ); ?>" alt=""></button>
     <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/15.jpg" ); ?>" aria-label="Portaria principal"><img src="<?php echo esc_url( "$dir/15.jpg" ); ?>" alt=""></button>
     <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/12.jpg" ); ?>" aria-label="Vinícola Costa Cave"><img src="<?php echo esc_url( "$dir/12.jpg" ); ?>" alt=""></button>
     <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/08.jpg" ); ?>" aria-label="Pavilhão Social"><img src="<?php echo esc_url( "$dir/08.jpg" ); ?>" alt=""></button>
-    <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/28.jpg" ); ?>" aria-label="Complexo Esportivo"><img src="<?php echo esc_url( "$dir/28.jpg" ); ?>" alt=""></button>
     <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/02.jpg" ); ?>" aria-label="Detalhes arquitetônicos"><img src="<?php echo esc_url( "$dir/02.jpg" ); ?>" alt=""></button>
-    <button class="hero__thumb" data-src="<?php echo esc_url( "$dir/33.jpg" ); ?>" aria-label="Quadras"><img src="<?php echo esc_url( "$dir/33.jpg" ); ?>" alt=""></button>
   </div>
 
   <div class="hero__info-row">

@@ -25,7 +25,6 @@
           <div><dt>Posição</dt><dd>Frente</dd></div>
           <div><dt>Disponibilidade</dt><dd>Limitada</dd></div>
         </dl>
-        <p class="type-card__price">A partir de <strong>R$ 419.000,00</strong></p>
         <button type="button" class="btn btn--primary btn--block" data-capture="lote-frente-lago">Quero este lote</button>
       </div>
     </article>
@@ -40,7 +39,6 @@
           <div><dt>Posição</dt><dd>Elevado</dd></div>
           <div><dt>Disponibilidade</dt><dd>Média</dd></div>
         </dl>
-        <p class="type-card__price">A partir de <strong>R$ 419.000,00</strong></p>
         <button type="button" class="btn btn--primary btn--block" data-capture="lote-vista-lago">Quero este lote</button>
       </div>
     </article>
@@ -55,7 +53,6 @@
           <div><dt>Posição</dt><dd>Mata preservada</dd></div>
           <div><dt>Disponibilidade</dt><dd>Boa</dd></div>
         </dl>
-        <p class="type-card__price">A partir de <strong>R$ 419.000,00</strong></p>
         <button type="button" class="btn btn--primary btn--block" data-capture="lote-bosque">Quero este lote</button>
       </div>
     </article>
