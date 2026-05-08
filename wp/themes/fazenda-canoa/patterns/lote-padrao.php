@@ -1,9 +1,9 @@
 <?php
 /**
  * Title: Vinícola Costa Cave — Diferencial exclusivo
- * Slug: fazenda-canoa/vinicola
+ * Slug: fazenda-canoa/lote-padrao
  * Categories: fazenda-canoa
- * Description: Section dedicada à Vinícola Costa Cave — vídeo, copy aspiracional e diferenciais.
+ * Description: Section dedicada à Vinícola Costa Cave — vídeo, copy aspiracional e diferenciais. (Mantém slug histórico "lote-padrao" pra não quebrar referências em templates.)
  */
 ?>
 <!-- wp:html -->
