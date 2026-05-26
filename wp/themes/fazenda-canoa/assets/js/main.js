@@ -352,23 +352,23 @@
       subtitle: 'Garanta sua posição no Lançamento II com parcelamento direto pela incorporadora FRSC.',
       interest: 'Informações gerais',
     },
-    'lote-frente-lago': {
-      eyebrow: 'Tipologia · Frente-Lago',
-      title: 'Lote Frente-Lago',
-      subtitle: 'Acesso privilegiado à orla de 2.000 m no Lago Corumbá IV. Vagas limitadas.',
-      interest: 'Lote frente-lago',
+    'praia-nautica': {
+      eyebrow: 'Praia Náutica',
+      title: 'Praia Náutica',
+      subtitle: 'Aproximadamente 2.000 m de orla privativa às margens do Lago Corumbá IV.',
+      interest: 'Praia Náutica',
     },
-    'lote-vista-lago': {
-      eyebrow: 'Tipologia · Vista-Lago',
-      title: 'Lote Vista-Lago',
-      subtitle: 'Panorama aberto do espelho d\'água em posição elevada, privacidade preservada.',
-      interest: 'Lote vista-lago',
+    'lago-corumba': {
+      eyebrow: 'Lago Corumbá IV',
+      title: 'Lago Corumbá IV',
+      subtitle: '173 km² de área alagada · 783,7 km de perímetro · 3,7 trilhões de litros.',
+      interest: 'Lago Corumbá IV',
     },
-    'lote-bosque': {
-      eyebrow: 'Tipologia · Bosque',
-      title: 'Lote Bosque',
-      subtitle: 'Imerso em mata preservada e paisagismo natural integrado ao projeto.',
-      interest: 'Lote bosque',
+    'natureza-preservada': {
+      eyebrow: 'Natureza preservada',
+      title: 'Natureza preservada',
+      subtitle: 'Paisagismo assinado por Luiz Carlos Orsini — um dos maiores nomes do paisagismo contemporâneo brasileiro.',
+      interest: 'Natureza preservada',
     },
     visita: {
       eyebrow: 'Visita presencial ou virtual',
@@ -854,5 +854,34 @@
         }
       });
     });
+  }
+
+  // ---------- 16. Carrossel de amenidades ----------
+  // Scroll horizontal nativo com setas prev/next. Estado disabled dos
+  // botões reflete posição do scroll (início/fim). Swipe touch funciona
+  // gratuitamente via overflow-x:auto + scroll-snap.
+  const amList = document.querySelector('.amenities__list');
+  const amPrev = document.querySelector('.amenities__arrow--prev');
+  const amNext = document.querySelector('.amenities__arrow--next');
+  if (amList && amPrev && amNext) {
+    const scrollByCards = (dir) => {
+      const card = amList.querySelector('.am-item');
+      if (!card) return;
+      const gap = parseInt(getComputedStyle(amList).gap, 10) || 12;
+      const step = card.offsetWidth + gap;
+      amList.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+    amPrev.addEventListener('click', () => scrollByCards(-1));
+    amNext.addEventListener('click', () => scrollByCards(1));
+
+    // Estado disabled — ativa quando atinge o extremo
+    const updateNavState = () => {
+      const maxScroll = amList.scrollWidth - amList.clientWidth;
+      amPrev.disabled = amList.scrollLeft <= 4;
+      amNext.disabled = amList.scrollLeft >= maxScroll - 4;
+    };
+    updateNavState();
+    amList.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
   }
 })();

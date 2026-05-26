@@ -6,7 +6,7 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.7.1** | Tema alinhado ao site mestre — apenas Farnham nos títulos (Sackers removida) | ~98 MB |
+| `fazenda-canoa-theme.zip` | **1.8.0** | Tema mestre — carrossel de amenidades + tipologias com novos diferenciais (Praia Náutica, Lago, Natureza) | ~98 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
 
 ### Mudanças na v1.4.0 (tema) e v1.0.4 (plugin) — 2026-04-27

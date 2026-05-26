@@ -29,7 +29,17 @@
   </div>
 
   <div class="amenities">
-    <h3 class="amenities__title">Amenidades do empreendimento</h3>
+    <div class="amenities__head">
+      <h3 class="amenities__title">Amenidades do empreendimento</h3>
+      <div class="amenities__nav" aria-label="Navegação das amenidades">
+        <button type="button" class="amenities__arrow amenities__arrow--prev" aria-label="Amenidades anteriores" disabled>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="amenities__arrow amenities__arrow--next" aria-label="Próximas amenidades">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
     <ul class="amenities__list">
       <li class="am-item am-item--clickable" data-amenity="beach-club" data-amenity-count="7" data-amenity-label="Beach Club" role="button" tabindex="0"><span class="am-item__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 22c3-2 5-2 8 0s5 2 8 0 5-2 8 0"/><path d="M4 26c3-2 5-2 8 0s5 2 8 0 5-2 8 0"/><path d="M8 18V8c0-2 1-3 3-3s3 1 3 3M18 18V9"/></svg></span><span class="am-item__name">Beach Club</span><span class="am-item__sub">Piscina infinita e bar</span></li>
       <li class="am-item am-item--clickable" data-amenity="orla" data-amenity-count="6" data-amenity-label="Orla privativa" role="button" tabindex="0"><span class="am-item__icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 10c3-3 6-3 9 0s6 3 9 0 6-3 9 0"/><path d="M2 18c3-3 6-3 9 0s6 3 9 0 6-3 9 0"/><path d="M2 26c3-3 6-3 9 0s6 3 9 0 6-3 9 0"/></svg></span><span class="am-item__name">Orla privativa</span><span class="am-item__sub">2.000 m no Lago Corumbá IV</span></li>
