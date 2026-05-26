@@ -17,7 +17,7 @@
   <div class="types__scroll" role="list">
     <article class="type-card" role="listitem">
       <div class="type-card__badge">Frente-Lago</div>
-      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/01.jpg" ); ?>" alt="Lote frente-lago" loading="lazy"></div>
+      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/lote-frente.jpg" ); ?>" alt="Lote frente-lago — vista aérea da península na orla do Lago Corumbá IV" loading="lazy"></div>
       <div class="type-card__info">
         <h3>Frente-Lago</h3>
         <dl class="type-card__specs">
@@ -31,7 +31,7 @@
 
     <article class="type-card" role="listitem">
       <div class="type-card__badge">Vista-Lago</div>
-      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/16.jpg" ); ?>" alt="Lote vista-lago" loading="lazy"></div>
+      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/lote-vista.jpg" ); ?>" alt="Lote vista-lago — posição elevada com panorama do espelho d'água" loading="lazy"></div>
       <div class="type-card__info">
         <h3>Vista-Lago</h3>
         <dl class="type-card__specs">
@@ -45,7 +45,7 @@
 
     <article class="type-card" role="listitem">
       <div class="type-card__badge">Bosque</div>
-      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/25.jpg" ); ?>" alt="Lote bosque" loading="lazy"></div>
+      <div class="type-card__img"><img src="<?php echo esc_url( "$dir/lote-bosque.jpg" ); ?>" alt="Lote bosque — imerso em mata preservada do Cerrado" loading="lazy"></div>
       <div class="type-card__info">
         <h3>Bosque</h3>
         <dl class="type-card__specs">
