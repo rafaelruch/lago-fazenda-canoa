@@ -361,12 +361,14 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   padding: 0 var(--s-5);
   position: relative;
 }
-.hero__banner-img {
+.hero__banner-img,
+.hero__banner-video {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: var(--r-md);
   background: var(--c-bg-soft);
+  display: block;
   transition: opacity 500ms var(--ease);
   opacity: 1;
   will-change: opacity;
@@ -388,6 +390,29 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   transition: all var(--dur);
 }
 .hero__all-photos:hover { background: #fff; transform: translateY(-1px); }
+
+.hero__sound {
+  position: absolute;
+  bottom: var(--s-4);
+  left: calc(var(--s-5) + var(--s-4));
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: var(--r-pill);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: all var(--dur);
+  z-index: 2;
+}
+.hero__sound:hover { background: rgba(0,0,0,0.75); transform: translateY(-1px); }
+.hero__sound-icon { flex: 0 0 auto; }
+.hero__sound[data-state="muted"] .hero__sound-icon--on { display: none; }
+.hero__sound[data-state="on"] .hero__sound-icon--muted { display: none; }
 
 /* Thumbs strip below banner */
 .hero__thumbs {
@@ -1987,6 +2012,10 @@ html:has(body.admin-bar) { scroll-padding-top: calc(var(--hdr-h) + 32px + 16px);
   align-items: center;
   justify-content: center;
   transition: background var(--dur);
+  /* Stage da imagem (.photo-lightbox__stage) tem position implícito que
+     pode ficar acima do close em mobile. z-index garante o close sempre
+     acima de tudo dentro do lightbox. */
+  z-index: 10;
 }
 .photo-lightbox__close:hover { background: rgba(255, 255, 255, 0.2); }
 .photo-lightbox__stage {
@@ -2182,3 +2211,7 @@ html:has(body.admin-bar) { scroll-padding-top: calc(var(--hdr-h) + 32px + 16px);
 @media (prefers-reduced-motion: reduce) {
   .am-item--clickable::after { transition: none; }
 }
+
+/* Hero agora usa <video> em vez de <img>. As thumbs antigas ficam
+   ocultas — o botão "Ver todas as fotos" continua abrindo o lightbox. */
+.hero__thumbs { display: none !important; }

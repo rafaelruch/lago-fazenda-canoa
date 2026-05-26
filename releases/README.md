@@ -6,8 +6,16 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.8.0** | Tema mestre — carrossel de amenidades + tipologias com novos diferenciais (Praia Náutica, Lago, Natureza) | ~98 MB |
+| `fazenda-canoa-theme.zip` | **1.9.1** | Toggle de som no vídeo do banner hero + reotimização de vídeos | ~70 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.9.1 (tema) — 2026-05-26
+
+- **Tema v1.9.1 (patch):** botão sobreposto no vídeo do hero para **ativar/desativar o som** (Ativar som ↔ Desativar som). O vídeo inicia mudo (exigência das políticas de autoplay dos browsers); um clique no botão libera o áudio AAC já embutido no `banner-lago.mp4`. Ícone troca entre alto-falante riscado (muted) e alto-falante com ondas (on), e o `aria-pressed`/`aria-label` acompanham o estado para acessibilidade.
+
+### Mudanças na v1.9.0 (tema) — 2026-05-26
+
+- **Tema v1.9.0 (feature):** o banner principal do hero agora é um **vídeo institucional** (`banner-lago.mp4`, autoplay/loop/muted/playsinline) com poster JPG para LCP. O slideshow de fotos e a faixa de thumbnails foram retirados desse bloco (lightbox de fotos continua disponível pelo "Ver todas as fotos"). Vídeo reotimizado de 177 MB → 3.1 MB (960p, CRF 30) e vídeo da Vinícola reduzido para 13 MB para caber no limite de 100 MB do GitHub.
 
 ### Mudanças na v1.4.0 (tema) e v1.0.4 (plugin) — 2026-04-27
 

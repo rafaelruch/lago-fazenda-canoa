@@ -39,7 +39,19 @@
   </div>
 
   <div class="hero__banner">
-    <img class="hero__banner-img" src="<?php echo esc_url( "$dir/28.jpg" ); ?>" alt="Vista aérea do complexo esportivo da Reserva Fazenda Canoa com Lago Corumbá IV ao fundo" loading="eager" fetchpriority="high">
+    <video
+      class="hero__banner-video"
+      autoplay loop muted playsinline preload="metadata"
+      poster="<?php echo esc_url( get_theme_file_uri( 'assets/video/banner-lago-poster.jpg' ) ); ?>"
+      aria-label="Vídeo institucional da Reserva Fazenda Canoa"
+    >
+      <source src="<?php echo esc_url( get_theme_file_uri( 'assets/video/banner-lago.mp4' ) ); ?>" type="video/mp4">
+    </video>
+    <button class="hero__sound" type="button" aria-label="Ativar som do vídeo" aria-pressed="false" data-state="muted">
+      <svg class="hero__sound-icon hero__sound-icon--muted" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
+      <svg class="hero__sound-icon hero__sound-icon--on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 010 7"/><path d="M18.5 5.5a9 9 0 010 13"/></svg>
+      <span class="hero__sound-label">Ativar som</span>
+    </button>
     <button class="hero__all-photos" type="button" aria-label="Ver todas as fotos">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       Ver todas as fotos (37)

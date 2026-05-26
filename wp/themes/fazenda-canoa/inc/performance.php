@@ -32,8 +32,8 @@ add_action( 'wp_head', function () {
 	// DNS prefetch para WhatsApp (cliques em CTAs)
 	echo '<link rel="dns-prefetch" href="//wa.me">' . "\n";
 
-	// Preload da imagem LCP (hero banner) — acelera significativamente o LCP
-	$lcp = get_theme_file_uri( 'assets/fotos/28.jpg' );
+	// Preload do poster do vídeo hero (LCP visível antes do vídeo carregar)
+	$lcp = get_theme_file_uri( 'assets/video/banner-lago-poster.jpg' );
 	echo '<link rel="preload" as="image" href="' . esc_url( $lcp ) . '" fetchpriority="high" type="image/jpeg">' . "\n";
 }, 0 );
 

@@ -110,7 +110,46 @@
   mobileMenu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMobileMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleMobileMenu(false); });
 
-  // ---------- 3. Hero slideshow cinematográfico (Ken Burns + crossfade) ----------
+  // ---------- 3. Hero — vídeo institucional autoplay ----------
+  // Se .hero__banner-video existir, garante autoplay (incluindo retry no
+  // primeiro gesto, pra contornar Low Power Mode no iOS) e pula o slideshow.
+  const heroBannerVideo = document.querySelector('.hero__banner-video');
+  if (heroBannerVideo) {
+    const tryPlay = () => heroBannerVideo.play().catch(() => { /* poster fica como fallback */ });
+    tryPlay();
+    const events = ['touchstart', 'click', 'scroll'];
+    const onFirstInteract = () => {
+      tryPlay();
+      events.forEach((e) => document.removeEventListener(e, onFirstInteract));
+    };
+    events.forEach((e) => document.addEventListener(e, onFirstInteract, { once: true, passive: true }));
+
+    // Toggle mute/unmute via botão sobreposto. Começa mudo (autoplay policy);
+    // primeiro clique ativa o som e troca o label/ícone.
+    const soundBtn = document.querySelector('.hero__sound');
+    const soundLabel = soundBtn?.querySelector('.hero__sound-label');
+    if (soundBtn) {
+      soundBtn.addEventListener('click', () => {
+        if (heroBannerVideo.muted) {
+          heroBannerVideo.muted = false;
+          heroBannerVideo.volume = 1;
+          tryPlay();
+          soundBtn.dataset.state = 'on';
+          soundBtn.setAttribute('aria-pressed', 'true');
+          soundBtn.setAttribute('aria-label', 'Desativar som do vídeo');
+          if (soundLabel) soundLabel.textContent = 'Desativar som';
+        } else {
+          heroBannerVideo.muted = true;
+          soundBtn.dataset.state = 'muted';
+          soundBtn.setAttribute('aria-pressed', 'false');
+          soundBtn.setAttribute('aria-label', 'Ativar som do vídeo');
+          if (soundLabel) soundLabel.textContent = 'Ativar som';
+        }
+      });
+    }
+  }
+
+  // Slideshow auto (Ken Burns + crossfade) — só roda se ainda usar img
   const heroBanner = document.querySelector('.hero__banner');
   const heroMainImg = document.querySelector('.hero__banner-img');
   const heroThumbs = Array.from(document.querySelectorAll('.hero__thumb'));
@@ -713,8 +752,11 @@
   // Construído dinamicamente — sem HTML extra nos patterns.
 
   // Base URL das fotos (lê do banner do hero)
-  const heroBannerImg = document.querySelector('.hero__banner-img');
-  const baseMatch = heroBannerImg ? heroBannerImg.src.match(/^(.+\/)\d+\.jpg/) : null;
+  // Deriva base URL de assets/fotos a partir de qualquer img numerada
+  // (banner antigo, thumb, ou foto de tipologia). Cobre tanto o hero com
+  // <img class="hero__banner-img"> quanto o novo hero com <video>.
+  const anyPhotoImg = document.querySelector('.hero__banner-img, .hero__thumb img, .type-card__img img');
+  const baseMatch = anyPhotoImg ? anyPhotoImg.src.match(/^(.+\/fotos\/)/) : null;
   const photosBase = baseMatch ? baseMatch[1] : null;
 
   if (photosBase) {
