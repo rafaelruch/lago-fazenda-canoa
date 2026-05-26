@@ -15,9 +15,7 @@
       <span aria-hidden="true">›</span>
       <a href="#">Silvânia</a>
       <span aria-hidden="true">›</span>
-      <a href="#">Condomínios</a>
-      <span aria-hidden="true">›</span>
-      <span>Reserva Fazenda Canoa</span>
+      <span>Condomínio Reserva Fazenda Canoa</span>
     </p>
 
     <h1 class="hero__title">Condomínio Reserva Fazenda Canoa</h1>

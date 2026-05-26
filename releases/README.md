@@ -6,8 +6,12 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.9.1** | Toggle de som no vídeo do banner hero + reotimização de vídeos | ~70 MB |
+| `fazenda-canoa-theme.zip` | **1.9.2** | Breadcrumb ajustado (Goiás › Silvânia › Condomínio Reserva Fazenda Canoa) | ~70 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.9.2 (tema) — 2026-05-26
+
+- **Tema v1.9.2 (fix):** breadcrumb do hero ajustado de `Goiás › Silvânia › Condomínios › Reserva Fazenda Canoa` para `Goiás › Silvânia › Condomínio Reserva Fazenda Canoa` (remove o nível "Condomínios" e prefixa "Condomínio" no nome do empreendimento).
 
 ### Mudanças na v1.9.1 (tema) — 2026-05-26
 
