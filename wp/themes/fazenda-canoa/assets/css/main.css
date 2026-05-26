@@ -880,7 +880,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 ============================================================ */
 .loc {
   padding: var(--s-8) var(--s-5);
-  background: var(--c-bg-soft);
+  background: var(--c-bg);
 }
 .loc__grid {
   max-width: var(--container);
@@ -956,7 +956,7 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 ============================================================ */
 .dev {
   padding: var(--s-8) var(--s-5);
-  background: var(--c-bg);
+  background: var(--c-bg-soft);
 }
 .dev__card {
   max-width: var(--container);

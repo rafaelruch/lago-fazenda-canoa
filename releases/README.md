@@ -6,8 +6,14 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.9.2** | Breadcrumb ajustado (Goiás › Silvânia › Condomínio Reserva Fazenda Canoa) | ~70 MB |
+| `fazenda-canoa-theme.zip` | **1.10.0** | Nav rebrand (O lago / Oportunidades / Fazenda Canoa / Amenidades / Localização) + consultor acima de localização | ~70 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.10.0 (tema) — 2026-05-26
+
+- **Tema v1.10.0 (feature):** **rebrand da navegação principal** — labels do header (desktop + mobile) e do footer atualizados para: `O lago` (→ #oferta), `Oportunidades` (→ #tipologias), `Fazenda Canoa` (→ #vinicola), `Amenidades` (→ #lazer), `Localização` (→ #localizacao). FAQ removido da nav principal (continua acessível pela seção no fim da LP).
+- **Tema v1.10.0 (UX):** seção "Atendimento especializado" (`consultor`) reposicionada para **acima** de "Localização" no front-page (storytelling fecha com o consultor visível logo antes do bloco geográfico, melhorando conversão pré-CTA).
+- **Tema v1.10.0 (visual):** backgrounds de `.loc` (Localização) e `.dev` (Incorporadora) trocados (`loc`: off-white → white; `dev`: white → off-white) para preservar a **alternação white/soft** ao longo do scroll após a reordenação do consultor.
 
 ### Mudanças na v1.9.2 (tema) — 2026-05-26
 
