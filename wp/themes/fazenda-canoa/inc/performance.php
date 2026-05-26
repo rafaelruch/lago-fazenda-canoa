@@ -18,9 +18,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 add_action( 'wp_head', function () {
 	echo "\n<!-- Resource hints -->\n";
-	// Preconnect para fontes (já temos via wp_enqueue, mas reforçamos)
-	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
-	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+	// Fontes self-hosted (Farnham + Sackers) — preload das críticas pra acelerar render
+	$fonts_critical = [
+		'farnham/FarnhamText-Regular.woff2',         // body
+		'farnham/FarnhamDisplay-LightItalic.woff2',  // h1 hero
+	];
+	foreach ( $fonts_critical as $f ) {
+		echo '<link rel="preload" as="font" type="font/woff2" crossorigin href="' . esc_url( get_theme_file_uri( 'assets/fonts/' . $f ) ) . '">' . "\n";
+	}
 	// DNS prefetch para Google Maps (iframe na seção localização)
 	echo '<link rel="dns-prefetch" href="//maps.google.com">' . "\n";
 	echo '<link rel="dns-prefetch" href="//www.google.com">' . "\n";
@@ -28,7 +33,7 @@ add_action( 'wp_head', function () {
 	echo '<link rel="dns-prefetch" href="//wa.me">' . "\n";
 
 	// Preload da imagem LCP (hero banner) — acelera significativamente o LCP
-	$lcp = get_theme_file_uri( 'assets/fotos/22.jpg' );
+	$lcp = get_theme_file_uri( 'assets/fotos/28.jpg' );
 	echo '<link rel="preload" as="image" href="' . esc_url( $lcp ) . '" fetchpriority="high" type="image/jpeg">' . "\n";
 }, 0 );
 

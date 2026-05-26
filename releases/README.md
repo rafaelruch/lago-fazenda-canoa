@@ -6,7 +6,7 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.6.1** | Tema (block theme custom — vídeo Vinícola + 77 fotos de amenidades clicáveis + 3 fotos novas dos lotes) | ~98 MB |
+| `fazenda-canoa-theme.zip` | **1.7.0** | Tema alinhado ao site mestre (Farnham + Sackers Gothic self-hosted, paleta de cores idêntica) | ~98 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
 
 ### Mudanças na v1.4.0 (tema) e v1.0.4 (plugin) — 2026-04-27

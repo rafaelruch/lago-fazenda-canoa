@@ -1,7 +1,52 @@
 /* ============================================================
    FAZENDA CANOA — LP v0.2 (refeita no padrão MySide)
    Tom: funcional, informativa, catálogo de produto imobiliário
+   Tipografia: Farnham (display+text) + Sackers Gothic (eyebrows)
    ============================================================ */
+
+/* ---------- @font-face — self-hosted Farnham + Sackers Gothic ---------- */
+@font-face {
+  font-family: 'Farnham Display';
+  src: url('../fonts/farnham/FarnhamDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Farnham Display';
+  src: url('../fonts/farnham/FarnhamDisplay-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Farnham Display';
+  src: url('../fonts/farnham/FarnhamDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Farnham Text';
+  src: url('../fonts/farnham/FarnhamText-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sackers Gothic';
+  src: url('../fonts/sackers/SackersGothic-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sackers Gothic';
+  src: url('../fonts/sackers/SackersGothic-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Garante que o atributo HTML `hidden` sempre force display:none.
    Sem isto, regras como `.modal__success { display:flex }` vencem
@@ -41,25 +86,35 @@ input.field--invalid {
   .field--invalid, input.field--invalid { animation: none; }
 }
 
-/* ---------- TOKENS ---------- */
+/* ---------- TOKENS ----------
+   Paleta alinhada ao site mestre fazendacanoa.com.br (2026-05-26).
+   - Preto-marrom #1C1B13 (CTAs, headline)
+   - Vermelho/corten #C02B0A (accent principal)
+   - Bege/khaki #878577 (acentuação suporte)
+   - Bege ultra claro #F0EEED (background soft)
+   ============================================================ */
 :root {
   --c-bg:       #FFFFFF;
-  --c-bg-soft:  #F7F6F2;
-  --c-bg-mid:   #EFEDE6;
-  --c-text:     #1A1A1A;
-  --c-text-2:   #4A4A4A;
-  --c-text-mute:#7A7A7A;
-  --c-line:     #E8E6DF;
-  --c-line-2:   #D8D5CC;
-  --c-primary:  #1A1A1A;   /* CTA preto sóbrio (MySide) */
-  --c-primary-h:#333333;
-  --c-accent:   #1F7A3F;   /* verde sutil para badges/status */
-  --c-accent-2: #2E8F4F;
-  --c-warning:  #B8710F;   /* laranja para alertas/pills de oferta */
-  --c-warning-soft: #FDF5E8;
-  --c-ok:       #1F7A3F;
+  --c-bg-soft:  #F0EEED;   /* mestre: bege ultra claro */
+  --c-bg-mid:   #E8E5E3;
+  --c-text:     #1C1B13;   /* mestre: preto-marrom escuro */
+  --c-text-2:   #5B5B5B;   /* mestre: cinza médio */
+  --c-text-mute:#878787;   /* mestre: cinza claro */
+  --c-line:     #E1DCD8;
+  --c-line-2:   #C9C5BF;
+  --c-primary:  #1C1B13;   /* mestre: CTA preto-marrom */
+  --c-primary-h:#382E2C;   /* mestre: hover acentuação marrom */
+  --c-accent:   #C02B0A;   /* mestre: vermelho/corten accent principal */
+  --c-accent-2: #878577;   /* mestre: khaki bege suporte */
+  --c-warning:  #C02B0A;   /* alinhado ao accent (era #B8710F laranja) */
+  --c-warning-soft: #FBE5DF;
+  --c-ok:       #198754;   /* verde Bootstrap success (compatível com mestre) */
 
-  --ff: 'Manrope', system-ui, -apple-system, sans-serif;
+  /* Tipografia — Farnham (Hoefler&Co.) + Sackers Gothic (Monotype) */
+  --ff-display: 'Farnham Display', Georgia, 'Times New Roman', serif;
+  --ff-text:    'Farnham Text', Georgia, 'Times New Roman', serif;
+  --ff-eyebrow: 'Sackers Gothic', 'Trajan Pro', Georgia, serif;
+  --ff:         var(--ff-text);  /* alias retrocompatível — body default */
 
   --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem;
   --s-4: 1rem;    --s-5: 1.5rem; --s-6: 2rem;
@@ -90,6 +145,25 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* Tipografia base — Farnham para títulos, Sackers Gothic para eyebrows.
+   Mesma stack do site mestre fazendacanoa.com.br. */
+h1, h2, h3, h4 {
+  font-family: var(--ff-display);
+  font-weight: 500;     /* Farnham Display Medium */
+  letter-spacing: -0.005em;
+}
+h1, .hero__title {
+  font-weight: 300;     /* Light italic — assinatura editorial */
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+.eyebrow, .offer__pill, .tag, [class*="__eyebrow"] {
+  font-family: var(--ff-eyebrow);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 img, picture, video { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }

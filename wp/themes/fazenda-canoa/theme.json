@@ -11,16 +11,16 @@
     "color": {
       "palette": [
         { "slug": "paper",      "color": "#FFFFFF",           "name": "Paper" },
-        { "slug": "paper-soft", "color": "#F7F6F2",           "name": "Paper Soft" },
-        { "slug": "paper-mid",  "color": "#EFEDE6",           "name": "Paper Mid" },
-        { "slug": "ink",        "color": "#1A1A1A",           "name": "Ink" },
-        { "slug": "text-2",     "color": "#4A4A4A",           "name": "Text 2" },
-        { "slug": "text-mute",  "color": "#7A7A7A",           "name": "Text Muted" },
-        { "slug": "line",       "color": "#E8E6DF",           "name": "Line" },
-        { "slug": "accent",     "color": "#1F7A3F",           "name": "Green Accent" },
-        { "slug": "accent-2",   "color": "#2E8F4F",           "name": "Green Accent 2" },
-        { "slug": "warning",    "color": "#B8710F",           "name": "Warning (Corten)" },
-        { "slug": "warning-soft","color": "#FDF5E8",          "name": "Warning Soft" },
+        { "slug": "paper-soft", "color": "#F0EEED",           "name": "Paper Soft (bege mestre)" },
+        { "slug": "paper-mid",  "color": "#E8E5E3",           "name": "Paper Mid" },
+        { "slug": "ink",        "color": "#1C1B13",           "name": "Ink (preto-marrom mestre)" },
+        { "slug": "text-2",     "color": "#5B5B5B",           "name": "Text 2 (cinza médio mestre)" },
+        { "slug": "text-mute",  "color": "#878787",           "name": "Text Muted (cinza claro mestre)" },
+        { "slug": "line",       "color": "#E1DCD8",           "name": "Line" },
+        { "slug": "accent",     "color": "#C02B0A",           "name": "Accent (corten/vermelho mestre)" },
+        { "slug": "accent-2",   "color": "#878577",           "name": "Accent 2 (khaki bege mestre)" },
+        { "slug": "warning",    "color": "#C02B0A",           "name": "Warning (corten — alinhado ao accent)" },
+        { "slug": "warning-soft","color": "#FBE5DF",          "name": "Warning Soft" },
         { "slug": "whatsapp",   "color": "#25D366",           "name": "WhatsApp" }
       ],
       "gradients": [],
@@ -34,16 +34,30 @@
       "dropCap": false,
       "fontFamilies": [
         {
-          "fontFamily": "'Manrope', system-ui, -apple-system, sans-serif",
-          "slug": "manrope",
-          "name": "Manrope",
+          "fontFamily": "'Farnham Display', Georgia, serif",
+          "slug": "farnham-display",
+          "name": "Farnham Display",
           "fontFace": [
-            {
-              "fontFamily": "Manrope",
-              "fontStyle": "normal",
-              "fontWeight": "300 700",
-              "src": [ "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" ]
-            }
+            { "fontFamily": "Farnham Display", "fontStyle": "normal",  "fontWeight": "300", "fontDisplay": "swap", "src": [ "file:./assets/fonts/farnham/FarnhamDisplay-Light.woff2" ] },
+            { "fontFamily": "Farnham Display", "fontStyle": "italic",  "fontWeight": "300", "fontDisplay": "swap", "src": [ "file:./assets/fonts/farnham/FarnhamDisplay-LightItalic.woff2" ] },
+            { "fontFamily": "Farnham Display", "fontStyle": "normal",  "fontWeight": "500", "fontDisplay": "swap", "src": [ "file:./assets/fonts/farnham/FarnhamDisplay-Medium.woff2" ] }
+          ]
+        },
+        {
+          "fontFamily": "'Farnham Text', Georgia, serif",
+          "slug": "farnham-text",
+          "name": "Farnham Text",
+          "fontFace": [
+            { "fontFamily": "Farnham Text", "fontStyle": "normal", "fontWeight": "400", "fontDisplay": "swap", "src": [ "file:./assets/fonts/farnham/FarnhamText-Regular.woff2" ] }
+          ]
+        },
+        {
+          "fontFamily": "'Sackers Gothic', 'Trajan Pro', Georgia, serif",
+          "slug": "sackers",
+          "name": "Sackers Gothic",
+          "fontFace": [
+            { "fontFamily": "Sackers Gothic", "fontStyle": "normal", "fontWeight": "300", "fontDisplay": "swap", "src": [ "file:./assets/fonts/sackers/SackersGothic-Light.woff2" ] },
+            { "fontFamily": "Sackers Gothic", "fontStyle": "normal", "fontWeight": "500", "fontDisplay": "swap", "src": [ "file:./assets/fonts/sackers/SackersGothic-Medium.woff2" ] }
           ]
         }
       ],

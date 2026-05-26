@@ -53,19 +53,13 @@ add_action( 'wp_head', function () {
 add_action( 'wp_enqueue_scripts', function () {
 	$ver = wp_get_theme()->get( 'Version' );
 
-	// Google Fonts
-	wp_enqueue_style(
-		'fc-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap',
-		[],
-		null
-	);
+	// Fontes self-hosted (Farnham + Sackers Gothic) — declaradas no main.css via @font-face
 
 	// Main stylesheet (our frontend CSS, copied from prototype)
 	wp_enqueue_style(
 		'fc-main',
 		get_theme_file_uri( 'assets/css/main.css' ),
-		[ 'fc-google-fonts' ],
+		[],
 		$ver
 	);
 
