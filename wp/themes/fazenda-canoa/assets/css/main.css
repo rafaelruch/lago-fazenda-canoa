@@ -449,7 +449,6 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
   display: flex;
   flex-direction: column;
   gap: var(--s-4);
-  border-top: 1px solid var(--c-line);
 }
 .hero__price {
   display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap;

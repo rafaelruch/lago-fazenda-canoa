@@ -6,8 +6,16 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.10.0** | Nav rebrand (O lago / Oportunidades / Fazenda Canoa / Amenidades / Localização) + consultor acima de localização | ~70 MB |
+| `fazenda-canoa-theme.zip` | **1.10.2** | Header sem botão WhatsApp + CTA único "Falar com especialista" + remove linha sob o vídeo hero | ~70 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.10.2 (tema) — 2026-05-26
+
+- **Tema v1.10.2 (UX):** **header reduzido a 1 CTA**. Botão "WhatsApp" do header desktop e do mobile menu removidos. O CTA "Falar com um especialista Fazenda Canoa" passa a ser **primário** (`btn--primary btn--sm`, mesmo estilo do hero), com o ícone de telefone. No mobile menu, vira o botão grande inferior (`mobile-menu__cta`), `data-capture="consultor"` → abre o modal de captação (não vai mais direto pro wa.me).
+
+### Mudanças na v1.10.1 (tema) — 2026-05-26
+
+- **Tema v1.10.1 (visual):** **linha divisória removida** entre o vídeo do hero e o bloco de preço/CTAs. `border-top: 1px solid var(--c-line)` deletada de `.hero__info-row`.
 
 ### Mudanças na v1.10.0 (tema) — 2026-05-26
 
