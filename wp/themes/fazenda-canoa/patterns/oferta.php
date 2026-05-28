@@ -10,12 +10,12 @@
 <section class="offer" id="oferta">
   <div class="offer__card">
     <div class="offer__media">
-      <img src="<?php echo esc_url( get_theme_file_uri( 'assets/fotos/15.jpg' ) ); ?>" alt="Entrada da Fazenda Canoa" loading="lazy">
+      <img src="<?php echo esc_url( get_theme_file_uri( 'assets/fotos/entrada-fazenda-canoa.jpg' ) ); ?>" alt="Entrada do Condomínio Reserva Fazenda Canoa com vista do lago" loading="lazy">
     </div>
     <div class="offer__body">
       <span class="offer__pill">Empreendimento pronto para morar</span>
       <h2 class="offer__title">Nova fase com lotes em posições privilegiadas</h2>
-      <p class="offer__desc">Lotes à beira do Lago Corumbá IV — com acesso privativo à orla, à marina e ao Beach Club. Entrada facilitada e parcelamento direto com a incorporadora FRSC.</p>
+      <p class="offer__desc">Lotes à beira do Lago Corumbá IV, com acesso privativo à orla, à marina e ao Beach Club. Entrada facilitada e parcelamento direto com a incorporadora FRSC.</p>
       <ul class="offer__list">
         <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Entrada facilitada</li>
         <li><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Parcelamento direto</li>

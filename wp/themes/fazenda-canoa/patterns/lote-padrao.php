@@ -30,7 +30,7 @@
     <div class="features__body">
       <p class="eyebrow">Vinícola Costa Cave</p>
       <h2 class="features__title">Do quintal de casa<br><em>direto à sua taça.</em></h2>
-      <p class="features__lede">A primeira vinícola privada de um condomínio-reserva no Brasil. Videiras plantadas nas encostas da Fazenda Canoa, com vista para o Lago Corumbá IV — produção artesanal, colheita anual e adega exclusiva para moradores e convidados.</p>
+      <p class="features__lede">A primeira vinícola privada de um condomínio-reserva no Brasil. Videiras plantadas nas encostas da Fazenda Canoa, com vista para o Lago Corumbá IV. Produção artesanal, colheita anual e adega exclusiva para moradores e convidados.</p>
 
       <ul class="features__grid">
         <li>
@@ -59,7 +59,7 @@
         </li>
       </ul>
 
-      <p class="features__quote"><em>“Vinho, lago e natureza no seu quintal — uma experiência impossível de replicar em qualquer outro empreendimento brasileiro.”</em></p>
+      <p class="features__quote"><em>“Vinho, lago e natureza no seu quintal. Uma experiência impossível de replicar em qualquer outro empreendimento brasileiro.”</em></p>
 
       <div class="features__ctas">
         <button type="button" class="btn btn--primary" data-capture="visita">Agendar visita guiada</button>

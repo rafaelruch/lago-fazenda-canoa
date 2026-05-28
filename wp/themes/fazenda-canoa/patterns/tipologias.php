@@ -10,7 +10,6 @@
 <?php $dir = get_theme_file_uri( 'assets/fotos' ); ?>
 <section class="types" id="tipologias">
   <header class="sec-head">
-    <h2>Tipologias disponíveis</h2>
     <p>Mais do que um empreendimento, um território raro cercado pelas águas do Lago Corumbá IV.</p>
   </header>
 

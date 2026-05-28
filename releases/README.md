@@ -6,8 +6,18 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.10.2** | Header sem botão WhatsApp + CTA único "Falar com especialista" + remove linha sob o vídeo hero | ~70 MB |
+| `fazenda-canoa-theme.zip` | **1.11.0** | Brand alignment: fonte Decimal + nova foto oferta + WhatsApp flutuante + copy cleanup | ~71 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.11.0 (tema) — 2026-05-28
+
+Pacote grande de brand alignment + UX após cliente entregar brandbook e dar feedback consolidado:
+
+- **Tema v1.11.0 (brand):** **fonte Decimal (Hoefler&Co.)** virou a tipografia de marca da LP. 6 pesos auto-hospedados em `assets/fonts/decimal/` (Light/Book/Medium/Semibold/Bold/BoldItalic, WOFF2, ~183 KB total). Aplicada em h1–h4 (substitui Farnham Display) e em todos os uppercase de eyebrows/pills/tags. Body segue em Farnham Text pra preservar leitura editorial. Variável nova `--ff-brand` reservada pra destaques de marca.
+- **Tema v1.11.0 (asset):** foto da seção "Nova fase com lotes em posições privilegiadas" trocada (cliente reclamou que `15.jpg` mostrava grama demais). Nova foto: `entrada-fazenda-canoa.jpg` (1.1 MB pós-sips de 15 MB, ângulo mais fechado na entrada).
+- **Tema v1.11.0 (copy):** título `<h2>Tipologias disponíveis</h2>` removido da seção `#tipologias` (só o lead permanece). Em-dashes (—) "cara de ChatGPT" substituídos por ponto/vírgula em 6 patterns (oferta, consultor, faq×2, lote-padrao×2, localizacao, incorporadora).
+- **Tema v1.11.0 (visual):** bloco FRSC na seção "Quem realiza" agora vem em **duas linhas**: `FRSC` (Decimal Bold) em cima + `Em constante busca pela excelência.` (italic destaque) embaixo. Traço entre eles eliminado. Estilizado via `.dev__name-brand` + `.dev__name-tag`.
+- **Tema v1.11.0 (UX):** **WhatsApp flutuante** redesenhado. O widget horizontal antigo (`.float-bar` + FAB `.float-mini`) foi substituído por um **botão redondo verde clássico** (`.wa-float`, 60px desktop, 54px mobile) ancorado no canto inferior-direito, com pulse animation (respeita `prefers-reduced-motion`). Mantém `data-wa-capture="wa-float"` → mesmo flow de captura mínima (nome + telefone → webhook secundário ImobMeet → wa.me).
 
 ### Mudanças na v1.10.2 (tema) — 2026-05-26
 

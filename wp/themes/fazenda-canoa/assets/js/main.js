@@ -570,34 +570,10 @@
     });
   });
 
-  // ---------- 11. Widget flutuante — toggle entre expandido e mini FAB ----------
-  const floatBar = document.getElementById('float-bar');
-  const floatClose = document.getElementById('float-bar-close');
-  const floatMini = document.getElementById('float-mini');
-  const FLOAT_STORAGE_KEY = 'fcanoa_float_collapsed';
-
-  const collapseFloat = () => {
-    floatBar?.classList.add('is-collapsed');
-    floatMini?.classList.add('is-visible');
-    try { localStorage.setItem(FLOAT_STORAGE_KEY, '1'); } catch (_) {}
-  };
-  const expandFloat = () => {
-    floatBar?.classList.remove('is-collapsed');
-    floatMini?.classList.remove('is-visible');
-    try { localStorage.setItem(FLOAT_STORAGE_KEY, '0'); } catch (_) {}
-  };
-
-  floatClose?.addEventListener('click', collapseFloat);
-  floatMini?.addEventListener('click', expandFloat);
-
-  // Restaura estado salvo (sem animação no load inicial se estava minimizado)
-  try {
-    if (localStorage.getItem(FLOAT_STORAGE_KEY) === '1') {
-      floatBar?.classList.add('is-collapsed');
-      // Mostra mini após o initial paint para evitar flash
-      requestAnimationFrame(() => floatMini?.classList.add('is-visible'));
-    }
-  } catch (_) {}
+  // ---------- 11. Botão WhatsApp flutuante ----------
+  // O #wa-float é um <a> com data-wa-capture="wa-float" — o flow de captura
+  // (modal mínimo nome+telefone → AJAX flow=whatsapp → abre wa.me) é tratado
+  // pelo bloco 14 abaixo. Nada de toggle aqui — é sempre visível.
 
   // ---------- 12. Card tilt sutil no mousemove (só em ponteiros finos/desktop) ----------
   if (!prm && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {

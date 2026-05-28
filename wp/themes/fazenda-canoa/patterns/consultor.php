@@ -12,7 +12,7 @@
   <div class="consultor__grid">
     <div class="consultor__text">
       <h2>Atendimento especializado</h2>
-      <p>Um consultor dedicado vai te apresentar plantas, disponibilidades, condições comerciais e agendar sua visita — presencial ou virtual.</p>
+      <p>Um consultor dedicado vai te apresentar plantas, disponibilidades, condições comerciais e agendar sua visita, presencial ou virtual.</p>
 
       <div class="consultor__channels">
         <a href="<?php echo esc_url( $wa_url ); ?>" class="ch-card ch-card--wa" rel="noopener" data-wa-capture="consultor-card">

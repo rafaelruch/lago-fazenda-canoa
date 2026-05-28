@@ -26,7 +26,7 @@
     </details>
     <details class="faq__item">
       <summary>Quanto da infraestrutura já foi entregue?</summary>
-      <div class="faq__body">Portaria 24h, Pavilhão Social, Complexo de Tênis (3 quadras oficiais), Heliponto homologado ANAC, Praça do Beija-Flor, Praça do Sabiá, Marina com Estaleiro Jatobá, garagem de barcos, píeres, Beach Club com piscina infinita, ciclovia e pista de Cooper — todos em operação.</div>
+      <div class="faq__body">Portaria 24h, Pavilhão Social, Complexo de Tênis (3 quadras oficiais), Heliponto homologado ANAC, Praça do Beija-Flor, Praça do Sabiá, Marina com Estaleiro Jatobá, garagem de barcos, píeres, Beach Club com piscina infinita, ciclovia e pista de Cooper. Todos em operação.</div>
     </details>
     <details class="faq__item">
       <summary>O Beach Club e a marina estão prontos?</summary>
@@ -42,7 +42,7 @@
     </details>
     <details class="faq__item">
       <summary>Como agendar uma visita ao empreendimento?</summary>
-      <div class="faq__body">Via WhatsApp <?php echo esc_html( do_shortcode('[lfc_whatsapp]') ); ?> ou pelo formulário desta página. Visitas são agendadas — presenciais (escritório em Anápolis) ou no próprio empreendimento em Silvânia.</div>
+      <div class="faq__body">Via WhatsApp <?php echo esc_html( do_shortcode('[lfc_whatsapp]') ); ?> ou pelo formulário desta página. Visitas são agendadas presenciais (escritório em Anápolis) ou no próprio empreendimento em Silvânia.</div>
     </details>
   </div>
 </section>

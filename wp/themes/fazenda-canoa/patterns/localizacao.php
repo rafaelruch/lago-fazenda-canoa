@@ -19,7 +19,7 @@
         <li><span class="loc__city">Brasília</span><span class="loc__line"></span><span class="loc__km">140 km</span></li>
         <li><span class="loc__city">Goiânia</span><span class="loc__line"></span><span class="loc__km">120 km</span></li>
         <li><span class="loc__city">Anápolis</span><span class="loc__line"></span><span class="loc__km">60 km</span></li>
-        <li><span class="loc__city">Cidade mais próxima — Silvânia</span><span class="loc__line"></span><span class="loc__km">—</span></li>
+        <li><span class="loc__city">Cidade mais próxima: Silvânia</span><span class="loc__line"></span><span class="loc__km">—</span></li>
       </ul>
 
       <p class="loc__note">Voos diretos ao heliponto homologado pela ANAC: Brasília · Goiânia · Anápolis.</p>
