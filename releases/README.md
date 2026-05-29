@@ -6,8 +6,12 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.11.0** | Brand alignment: fonte Decimal + nova foto oferta + WhatsApp flutuante + copy cleanup | ~71 MB |
+| `fazenda-canoa-theme.zip` | **1.11.1** | Restaura widget flutuante "Falar com consultor" (bottom-center) | ~71 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.11.1 (tema) — 2026-05-29
+
+- **Tema v1.11.1 (fix):** widget flutuante "Falar com consultor" (horizontal centralizado no bottom + close + avatar + CTA "Conversar por WhatsApp" + mini FAB pra reabrir) **restaurado exatamente como estava antes do v1.11.0**. No 1.11.0 eu interpretei errado o pedido do PDF ("Adicionar botão de WhatsApp volante") e substituí o widget por um botão WhatsApp redondo no canto inferior-direito — cliente esclareceu que o widget original não era pra ter sido removido. Sem botão WhatsApp redondo separado nesta versão.
 
 ### Mudanças na v1.11.0 (tema) — 2026-05-28
 

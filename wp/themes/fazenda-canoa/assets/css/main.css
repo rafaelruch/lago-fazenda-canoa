@@ -1288,64 +1288,214 @@ input, select, textarea { font-family: inherit; font-size: inherit; }
 .ft__credit:hover { color: var(--c-accent-2); border-bottom-color: var(--c-accent-2); }
 
 /* ============================================================
-   BOTÃO WHATSAPP FLUTUANTE (volante) — round, bottom-right
+   WIDGET FLUTUANTE BOTTOM (estilo MySide)
 ============================================================ */
-.wa-float {
+.float-bar {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  left: 50%;
+  bottom: 16px;
   z-index: 90;
-  width: 60px;
-  height: 60px;
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  padding: 6px 6px 6px 6px;
+  background: var(--c-bg);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-pill);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.14),
+              0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: calc(100vw - 16px);
+  transform-origin: right bottom;
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+  animation: floatBarIn 900ms var(--ease-out-expo) 500ms forwards;
+  transition: opacity 450ms var(--ease-out-expo),
+              transform 600ms var(--ease-out-expo),
+              visibility 0s linear 600ms;
+}
+@keyframes floatBarIn {
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Estado colapsado: slide+scale em direção ao canto inferior direito */
+.float-bar.is-collapsed {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: translateX(calc(50vw - 100% - 16px)) translateY(0) scale(0.1);
+  animation: none;
+}
+
+/* Botão X de fechar */
+.float-bar__close {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #25D366;
-  color: #fff;
+  background: var(--c-bg-soft);
+  color: var(--c-text-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35),
-              0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: transform var(--dur) var(--ease),
-              box-shadow var(--dur) var(--ease),
-              background var(--dur);
-  cursor: pointer;
+  align-self: center;
+  flex-shrink: 0;
+  transition: background var(--dur), color var(--dur), transform var(--dur);
+}
+.float-bar__close:hover {
+  background: var(--c-line);
+  color: var(--c-text);
+  transform: rotate(90deg);
+}
+
+/* ---------- Mini FAB (estado colapsado) ---------- */
+.float-mini {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 91;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--c-text);
+  color: var(--c-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22),
+              0 2px 6px rgba(0, 0, 0, 0.1);
   opacity: 0;
-  transform: translateY(20px) scale(0.8);
-  animation: waFloatIn 600ms var(--ease) 800ms forwards;
+  transform: scale(0) rotate(-20deg);
+  pointer-events: none;
+  transition: opacity 350ms var(--ease-out-expo),
+              transform 450ms var(--ease-spring);
+  cursor: pointer;
 }
-@keyframes waFloatIn {
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.float-mini.is-visible {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  pointer-events: auto;
+  transition-delay: 350ms; /* aparece após a barra colapsar */
 }
-.wa-float:hover {
-  background: #1ebd5a;
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5),
-              0 6px 16px rgba(0, 0, 0, 0.2);
+.float-mini:hover {
+  transform: scale(1.08) rotate(0deg);
+  background: var(--c-primary-h);
 }
-.wa-float:focus-visible {
-  outline: 3px solid rgba(37, 211, 102, 0.5);
-  outline-offset: 3px;
-}
-.wa-float svg { position: relative; z-index: 2; }
-.wa-float__pulse {
+.float-mini svg { position: relative; z-index: 2; }
+
+/* Badge "me clique" — ponto verde pulsante no canto do FAB */
+.float-mini__badge {
   position: absolute;
-  inset: 0;
+  top: 6px;
+  right: 6px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   background: #25D366;
-  z-index: 1;
-  animation: waPulse 2.4s ease-out infinite;
+  border: 2px solid var(--c-bg);
+  z-index: 3;
+  animation: miniPulse 2.4s ease-in-out infinite 1s;
 }
-@keyframes waPulse {
-  0%   { transform: scale(1);   opacity: 0.55; }
-  100% { transform: scale(1.9); opacity: 0; }
+@keyframes miniPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+  50%      { box-shadow: 0 0 0 8px rgba(37,211,102,0); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .wa-float { animation: none; opacity: 1; transform: none; }
-  .wa-float__pulse { animation: none; opacity: 0; }
+
+/* Tooltip sutil no hover do mini (desktop) */
+.float-mini::after {
+  content: 'Atendimento Fazenda Canoa';
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur);
 }
+@media (hover: hover) {
+  .float-mini:hover::after { opacity: 1; }
+}
+
+.float-bar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1rem;
+  border-radius: var(--r-pill);
+  font-family: var(--ff);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background var(--dur), color var(--dur), transform var(--dur);
+  cursor: pointer;
+}
+.float-bar__btn--wa {
+  background: #25D366;
+  color: #fff;
+  border: 1px solid #25D366;
+}
+.float-bar__btn--wa:hover {
+  background: #1fbd5a;
+  border-color: #1fbd5a;
+  transform: translateY(-1px);
+}
+
+.float-bar__center {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+}
+.float-bar__avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-accent-2), var(--c-accent));
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.float-bar__avatar::after {
+  content: '';
+  position: absolute;
+  right: -1px; bottom: -1px;
+  width: 10px; height: 10px;
+  background: #25D366;
+  border: 2px solid var(--c-bg);
+  border-radius: 50%;
+}
+.float-bar__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.float-bar__text strong {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--c-text);
+}
+.float-bar__text span {
+  font-size: 0.72rem;
+  color: var(--c-text-mute);
+}
+
+/* Mostra o centro (consultor) só em telas largas */
+@media (min-width: 900px) {
+  .float-bar__center { display: flex; }
+}
+
+/* No mobile, textos dos botões ficam compactos */
 @media (max-width: 479px) {
-  .wa-float { width: 54px; height: 54px; right: 16px; bottom: 16px; }
-  .wa-float svg { width: 26px; height: 26px; }
+  .float-bar__btn {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.78rem;
+  }
+  .float-bar__btn--wa span { font-size: 0.78rem; }
 }
 
 /* Modal modo BOOK — esconde e-mail e interesse (só nome + telefone) */
