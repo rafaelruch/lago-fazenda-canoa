@@ -6,8 +6,12 @@ Esta pasta contém os **pacotes ZIP prontos** para upload via WordPress admin. U
 
 | Arquivo | Versão | O que é | Tamanho |
 |---|---|---|---|
-| `fazenda-canoa-theme.zip` | **1.11.1** | Restaura widget flutuante "Falar com consultor" (bottom-center) | ~71 MB |
+| `fazenda-canoa-theme.zip` | **1.11.2** | Remove em-dashes (—) renderizáveis (copy + SEO + alts + footer + header) | ~71 MB |
 | `lfc-opcoes-plugin.zip`   | **1.0.4** | Plugin de opções + leads + webhook ImobMeet (principal + WhatsApp) + UTMs | ~11 KB |
+
+### Mudanças na v1.11.2 (tema) — 2026-05-29
+
+- **Tema v1.11.2 (copy):** segundo sweep de em-dashes (—) "cara de ChatGPT". Substituídos por ponto/vírgula/dois-pontos em: `patterns/localizacao.php` (loc__km do "Cidade mais próxima: Silvânia" virou vazio), `patterns/tipologias.php` (3 alt texts dos type-cards), `parts/footer.html` ("FRSC — frsc.com.br" → "FRSC · frsc.com.br"), `parts/header.html` (aria-label), `inc/seo.php` (7 ocorrências: meta description, OG, Schema.org, FAQ Q&A). Comentários PHP docblock preservados.
 
 ### Mudanças na v1.11.1 (tema) — 2026-05-29
 
